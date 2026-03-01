@@ -27,27 +27,27 @@ export type AggregateUser = {
 }
 
 export type UserAvgAggregateOutputType = {
-  id: number | null
+  idUser: number | null
 }
 
 export type UserSumAggregateOutputType = {
-  id: number | null
+  idUser: number | null
 }
 
 export type UserMinAggregateOutputType = {
-  id: number | null
+  idUser: number | null
   email: string | null
   username: string | null
 }
 
 export type UserMaxAggregateOutputType = {
-  id: number | null
+  idUser: number | null
   email: string | null
   username: string | null
 }
 
 export type UserCountAggregateOutputType = {
-  id: number
+  idUser: number
   email: number
   username: number
   _all: number
@@ -55,27 +55,27 @@ export type UserCountAggregateOutputType = {
 
 
 export type UserAvgAggregateInputType = {
-  id?: true
+  idUser?: true
 }
 
 export type UserSumAggregateInputType = {
-  id?: true
+  idUser?: true
 }
 
 export type UserMinAggregateInputType = {
-  id?: true
+  idUser?: true
   email?: true
   username?: true
 }
 
 export type UserMaxAggregateInputType = {
-  id?: true
+  idUser?: true
   email?: true
   username?: true
 }
 
 export type UserCountAggregateInputType = {
-  id?: true
+  idUser?: true
   email?: true
   username?: true
   _all?: true
@@ -168,7 +168,7 @@ export type UserGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 }
 
 export type UserGroupByOutputType = {
-  id: number
+  idUser: number
   email: string
   username: string
   _count: UserCountAggregateOutputType | null
@@ -197,28 +197,28 @@ export type UserWhereInput = {
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
-  id?: Prisma.IntFilter<"User"> | number
+  idUser?: Prisma.IntFilter<"User"> | number
   email?: Prisma.StringFilter<"User"> | string
   username?: Prisma.StringFilter<"User"> | string
 }
 
 export type UserOrderByWithRelationInput = {
-  id?: Prisma.SortOrder
+  idUser?: Prisma.SortOrder
   email?: Prisma.SortOrder
   username?: Prisma.SortOrder
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
-  id?: number
+  idUser?: number
   email?: string
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   username?: Prisma.StringFilter<"User"> | string
-}, "id" | "email">
+}, "idUser" | "email">
 
 export type UserOrderByWithAggregationInput = {
-  id?: Prisma.SortOrder
+  idUser?: Prisma.SortOrder
   email?: Prisma.SortOrder
   username?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -232,7 +232,7 @@ export type UserScalarWhereWithAggregatesInput = {
   AND?: Prisma.UserScalarWhereWithAggregatesInput | Prisma.UserScalarWhereWithAggregatesInput[]
   OR?: Prisma.UserScalarWhereWithAggregatesInput[]
   NOT?: Prisma.UserScalarWhereWithAggregatesInput | Prisma.UserScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"User"> | number
+  idUser?: Prisma.IntWithAggregatesFilter<"User"> | number
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   username?: Prisma.StringWithAggregatesFilter<"User"> | string
 }
@@ -243,7 +243,7 @@ export type UserCreateInput = {
 }
 
 export type UserUncheckedCreateInput = {
-  id?: number
+  idUser?: number
   email: string
   username: string
 }
@@ -254,13 +254,13 @@ export type UserUpdateInput = {
 }
 
 export type UserUncheckedUpdateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  idUser?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type UserCreateManyInput = {
-  id?: number
+  idUser?: number
   email: string
   username: string
 }
@@ -271,35 +271,35 @@ export type UserUpdateManyMutationInput = {
 }
 
 export type UserUncheckedUpdateManyInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  idUser?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type UserCountOrderByAggregateInput = {
-  id?: Prisma.SortOrder
+  idUser?: Prisma.SortOrder
   email?: Prisma.SortOrder
   username?: Prisma.SortOrder
 }
 
 export type UserAvgOrderByAggregateInput = {
-  id?: Prisma.SortOrder
+  idUser?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
-  id?: Prisma.SortOrder
+  idUser?: Prisma.SortOrder
   email?: Prisma.SortOrder
   username?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
-  id?: Prisma.SortOrder
+  idUser?: Prisma.SortOrder
   email?: Prisma.SortOrder
   username?: Prisma.SortOrder
 }
 
 export type UserSumOrderByAggregateInput = {
-  id?: Prisma.SortOrder
+  idUser?: Prisma.SortOrder
 }
 
 export type StringFieldUpdateOperationsInput = {
@@ -317,36 +317,36 @@ export type IntFieldUpdateOperationsInput = {
 
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  id?: boolean
+  idUser?: boolean
   email?: boolean
   username?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  id?: boolean
+  idUser?: boolean
   email?: boolean
   username?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  id?: boolean
+  idUser?: boolean
   email?: boolean
   username?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
-  id?: boolean
+  idUser?: boolean
   email?: boolean
   username?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "username", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"idUser" | "email" | "username", ExtArgs["result"]["user"]>
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: number
+    idUser: number
     email: string
     username: string
   }, ExtArgs["result"]["user"]>
@@ -432,8 +432,8 @@ export interface UserDelegate<ExtArgs extends runtime.Types.Extensions.InternalA
    * // Get first 10 Users
    * const users = await prisma.user.findMany({ take: 10 })
    * 
-   * // Only select the `id`
-   * const userWithIdOnly = await prisma.user.findMany({ select: { id: true } })
+   * // Only select the `idUser`
+   * const userWithIdUserOnly = await prisma.user.findMany({ select: { idUser: true } })
    * 
    */
   findMany<T extends UserFindManyArgs>(args?: Prisma.SelectSubset<T, UserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -477,9 +477,9 @@ export interface UserDelegate<ExtArgs extends runtime.Types.Extensions.InternalA
    *   ]
    * })
    * 
-   * // Create many Users and only return the `id`
-   * const userWithIdOnly = await prisma.user.createManyAndReturn({
-   *   select: { id: true },
+   * // Create many Users and only return the `idUser`
+   * const userWithIdUserOnly = await prisma.user.createManyAndReturn({
+   *   select: { idUser: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -568,9 +568,9 @@ export interface UserDelegate<ExtArgs extends runtime.Types.Extensions.InternalA
    *   ]
    * })
    * 
-   * // Update zero or more Users and only return the `id`
-   * const userWithIdOnly = await prisma.user.updateManyAndReturn({
-   *   select: { id: true },
+   * // Update zero or more Users and only return the `idUser`
+   * const userWithIdUserOnly = await prisma.user.updateManyAndReturn({
+   *   select: { idUser: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -772,7 +772,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
  * Fields of the User model
  */
 export interface UserFieldRefs {
-  readonly id: Prisma.FieldRef<"User", 'Int'>
+  readonly idUser: Prisma.FieldRef<"User", 'Int'>
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly username: Prisma.FieldRef<"User", 'String'>
 }
