@@ -15,9 +15,7 @@ model User{
   username String
 }
 
-model Pedido{
-  id
-}
+
 
 model Produto {
   idProduto Int @default(autoincrement()) @id
