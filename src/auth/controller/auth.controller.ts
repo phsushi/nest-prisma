@@ -1,7 +1,8 @@
-import { Body, Controller, HttpCode, HttpStatus, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, Request, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AuthService } from '../services/auth.service';
 import { UserDto } from 'src/users/userDto';
 import { SignInDto } from '../signInDto';
+import { AuthGuard } from '../guards/auth/auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -12,5 +13,11 @@ export class AuthController {
     @UsePipes(new ValidationPipe)
     signIn(@Body() singInDto: SignInDto){
         return this.authService.signIn(singInDto.email, singInDto.password);
+    }
+
+    @UseGuards(AuthGuard)
+    @Get('profile')
+    getProfile(@Request() req){
+        return req.user;
     }
 }
