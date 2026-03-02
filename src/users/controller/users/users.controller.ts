@@ -5,7 +5,7 @@ import { UserDto } from 'src/users/userDto';
 @Controller('users')
 export class UsersController {
     constructor(private userService: UsersService){}
-
+    //rota de dev
     @Get()
     async getUsers(){
         return await this.userService.fetchAllUsers();
@@ -16,6 +16,8 @@ export class UsersController {
     async signin(@Body() userData: UserDto){
         return await this.userService.createUser(userData);
     }
+    
+    //rota de dev
     @Delete('delete/:id')
     async deleteUser(@Param('id', ParseIntPipe) idUser: number){
         
