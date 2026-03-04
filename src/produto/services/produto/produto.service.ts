@@ -75,7 +75,7 @@ export class ProdutoService {
     }
     //metodo de criação de produto
     createProduto(data){
-        return this.produtosMock.push(data)
+        return this.prismaService.produto.create(data)
     }
     deleteProduto(id){
         const produtoExists = this.prismaService.produto.findFirst({where: {idProduto: id}})
