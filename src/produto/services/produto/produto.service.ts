@@ -1,7 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class ProdutoService {
+    constructor(private prismaService: PrismaService){}
     produtosMock = [
     {
         idProduto: 1,
@@ -76,8 +78,11 @@ export class ProdutoService {
         return this.produtosMock.push(data)
     }
     deleteProduto(id){
-        // futura implementação com o prisma
-        //return this.prisma.produto.delete({where: {id}})
-        return this.produtosMock.splice(this.produtosMock.indexOf(id),1);
+        const produtoExists = this.prismaService.produto.findFirst({where: {idProduto: id}})
+
+        if (!produtoExists){
+            throw new NotFoundException('Produto não encontrado');
+        }
+        return this.prismaService.produto.delete({where:{idProduto:id}})
     }
 }
