@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, ParseIntPipe, Post, Query } from '@nestjs/common';
 import { ProdutoService } from 'src/produto/services/produto/produto.service';
 
 @Controller('produto')
@@ -13,5 +13,10 @@ export class ProdutoController {
     @Post()
     createProduto(@Body() produtoData){
         return this.produtoService.createProduto(produtoData)
+    }
+
+    @Delete()
+    deleteProduto(@Query('id',ParseIntPipe) id:number ){
+        return this.produtoService.deleteProtudo(id)
     }
 }
