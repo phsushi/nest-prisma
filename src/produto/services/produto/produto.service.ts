@@ -37,6 +37,34 @@ export class ProdutoService {
         descricao: "Cancelamento de ruído ativo e bateria de 40h",
         preco: 899.00,
         qtdProduto: 30
+    },
+    {
+        idProduto: 6,
+        nomeProduto: "Monitor UltraWide 34\"",
+        descricao: "Resolução 4K, 144Hz, painel IPS",
+        preco: 2100.00,
+        qtdProduto: 15
+    },
+    {
+        idProduto: 7,
+        nomeProduto: "Headset Wireless Premium",
+        descricao: "Cancelamento de ruído ativo e bateria de 40h",
+        preco: 899.00,
+        qtdProduto: 30
+    },
+    {
+        idProduto: 8,
+        nomeProduto: "Monitor UltraWide 34\"",
+        descricao: "Resolução 4K, 144Hz, painel IPS",
+        preco: 2100.00,
+        qtdProduto: 15
+    },
+    {
+        idProduto: 9,
+        nomeProduto: "Headset Wireless Premium",
+        descricao: "Cancelamento de ruído ativo e bateria de 40h",
+        preco: 899.00,
+        qtdProduto: 30
     }
 ]
     //metodo de querry/exibição do catalogo
