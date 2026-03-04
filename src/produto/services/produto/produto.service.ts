@@ -39,11 +39,11 @@ export class ProdutoService {
         "qtdProduto": 30
     }
 ]
-
+    //metodo de querry/exibição do catalogo
     fetchProdutos(){
         return this.produtosMock;
     }
-
+    //metodo de criação de produto
     createProduto(data){
         return this.produtosMock.push(data)
     }
