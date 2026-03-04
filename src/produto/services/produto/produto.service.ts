@@ -75,4 +75,7 @@ export class ProdutoService {
     createProduto(data){
         return this.produtosMock.push(data)
     }
+    deleteProtudo(id){
+        return this.produtosMock.splice(this.produtosMock.indexOf(id),1)
+    }
 }
