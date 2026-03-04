@@ -43,4 +43,8 @@ export class ProdutoService {
     fetchProdutos(){
         return this.produtosMock;
     }
+
+    createProduto(data){
+        return this.produtosMock.push(data)
+    }
 }
