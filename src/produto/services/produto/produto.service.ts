@@ -75,7 +75,9 @@ export class ProdutoService {
     createProduto(data){
         return this.produtosMock.push(data)
     }
-    deleteProtudo(id){
-        return this.produtosMock.splice(this.produtosMock.indexOf(id),1)
+    deleteProduto(id){
+        // futura implementação com o prisma
+        //return this.prisma.produto.delete({where: {id}})
+        return this.produtosMock.splice(this.produtosMock.indexOf(id),1);
     }
 }

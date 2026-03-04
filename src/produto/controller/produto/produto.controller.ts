@@ -17,6 +17,6 @@ export class ProdutoController {
 
     @Delete()
     deleteProduto(@Query('id',ParseIntPipe) id:number ){
-        return this.produtoService.deleteProtudo(id)
+        return this.produtoService.deleteProduto(id)
     }
 }
