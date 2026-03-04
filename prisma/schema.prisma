@@ -16,12 +16,14 @@ model User{
   password String 
 }
 
-
-
 model Produto {
   idProduto Int @default(autoincrement()) @id
   nomeProduto String  
   descricao String
   preco Float
   qtdProduto Int 
+}
+
+model Pedidos {
+
 }
