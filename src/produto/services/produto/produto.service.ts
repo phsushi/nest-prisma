@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { ExceptionsHandler } from '@nestjs/core/exceptions/exceptions-handler';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ProdutoDto } from 'src/produto/ProdutoDto';
+import { UpdateProdutoDto } from 'src/produto/UpdateProdutoDto';
 
 @Injectable()
 export class ProdutoService {
@@ -28,6 +29,15 @@ export class ProdutoService {
             throw new NotFoundException('Produto não encontrado');
         }
         return await this.prismaService.produto.delete({where:{idProduto:id}})
+    }
+    async updateProduto(updateData: UpdateProdutoDto, id:number){
+        const produtoExists= await this.verificaProdutoExiste(id);
+
+         if (!produtoExists){
+            throw new NotFoundException('Produto não encontrado');
+        }
+
+        return await this.prismaService.produto.update({data: updateData, where:{idProduto:id}});
     }
 
     async verificaProdutoExiste(id:number):Promise<ProdutoDto|null>{
