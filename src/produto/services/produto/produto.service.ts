@@ -40,7 +40,7 @@ export class ProdutoService {
         return await this.prismaService.produto.update({data: updateData, where:{idProduto:id}});
     }
 
-    async verificaProdutoExiste(id:number):Promise<ProdutoDto|null>{
+    private async verificaProdutoExiste(id:number):Promise<ProdutoDto|null>{
          
         return await this.prismaService.produto.findFirst({where: {idProduto: id}});
     }
