@@ -1,7 +1,9 @@
-import { Body, Controller, Delete, Get, ParseIntPipe, Post, Query, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ValidationTypes } from 'class-validator';
 import { ProdutoDto } from 'src/produto/ProdutoDto';
 import { ProdutoService } from 'src/produto/services/produto/produto.service';
+import { UpdateProdutoDto } from 'src/produto/UpdateProdutoDto';
+import { UserDto } from 'src/users/userDto';
 
 @Controller('produto')
 export class ProdutoController {
@@ -18,8 +20,14 @@ export class ProdutoController {
         return this.produtoService.createProduto(produtoData);
     }
 
-    @Delete()
-    deleteProduto(@Query('id',ParseIntPipe) id:number ){
+    @Delete('delete/:id')
+    deleteProduto(@Param('id',ParseIntPipe) id:number ){
         return this.produtoService.deleteProduto(id);
+    }
+
+    @Put('update/:id')
+    @UsePipes(new ValidationPipe)
+    alterarProduto(@Param('id', ParseIntPipe) id: number, @Body() updateProdutoData: UpdateProdutoDto){
+        return  this.produtoService.updateProduto(updateProdutoData, id);
     }
 }
