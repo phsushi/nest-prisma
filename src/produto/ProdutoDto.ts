@@ -9,7 +9,7 @@ export class ProdutoDto {
     nomeProduto: string
 
     @IsString()
-    descricao?:string
+    descricao:string
 
     @IsNotEmpty()
     @IsNumber()

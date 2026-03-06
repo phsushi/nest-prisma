@@ -12,15 +12,16 @@ export class ProdutoService {
         return await this.prismaService.produto.findMany();
     }
     //metodo de criação de produto
-    async createProduto(data){
-        const produtoExists= await this.verificaProdutoExiste(data.id);
+    async createProduto(data: ProdutoDto){
+        const produtoExists = await this.verificaProdutoExiste(data.idProduto);
 
         if (produtoExists){
             throw new ExceptionsHandler
         }
-        return await this.prismaService.produto.create(data)
+
+        return await this.prismaService.produto.create({data})
     }
-    async deleteProduto(id){
+    async deleteProduto(id:number){
         const produtoExists= await this.verificaProdutoExiste(id);
 
         if (!produtoExists){
@@ -29,7 +30,7 @@ export class ProdutoService {
         return await this.prismaService.produto.delete({where:{idProduto:id}})
     }
 
-    async verificaProdutoExiste(id):Promise<ProdutoDto|null>{
+    async verificaProdutoExiste(id:number):Promise<ProdutoDto|null>{
          
         return await this.prismaService.produto.findFirst({where: {idProduto: id}});
     }
