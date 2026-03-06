@@ -27,5 +27,4 @@ model Produto {
 model Pedidos {
   idPedido Int @default(autoincrement()) @id
   user = User
-  produtos = produto[]
 }
