@@ -9,22 +9,72 @@ datasource db {
   provider = "sqlite"
 }
 
-model User{
-  idUser    Int   @default(autoincrement()) @id
-  email String  @unique
-  username String
-  password String 
+model Usuario {
+  id           Int           @id @default(autoincrement())
+  nomeCompleto String
+  email        String        @unique
+  senha        String
+  telefone     String
+  
+  // Relações
+  carrinhoItens CarrinhoItem[]
+  enderecos     Endereco[]
+}
+
+model Vendedor {
+  id           Int        @id @default(autoincrement())
+  nomeCompleto String
+  email        String     @unique
+  senha        String
+  telefone     String
+  cpf          String     @unique
+  avaliacao    Float      @default(0.0)
+
+  // Relações
+  produtos     Produto[]
+  enderecos    Endereco[]
 }
 
 model Produto {
-  idProduto Int @default(autoincrement()) @id
-  nomeProduto String  
-  descricao String
-  preco Float
-  qtdProduto Int 
+  id                 Int      @id @default(autoincrement())
+  nomeProduto        String
+  descricao          String
+  precio             Float
+  quantidadeEstoque  Int
+  avaliacao          Float    @default(0.0)
+
+  // Relação com Vendedor (1 Vendedor cadastrou N Produtos)
+  vendedor   Vendedor @relation(fields: [vendedorId], references: [id])
+  vendedorId Int
+
+  // Relação com Itens de Carrinho
+  carrinhoItens CarrinhoItem[]
 }
 
-model Pedidos {
-  idPedido Int @default(autoincrement()) @id
-  user = User
+model CarrinhoItem {
+  id             Int      @id @default(autoincrement())
+  quantidade     Int
+  dataAdicionado DateTime @default(now())
+
+  // Relação com Cliente (1 Cliente tem N Itens no Carrinho)
+  cliente   Cliente @relation(fields: [clienteId], references: [id])
+  clienteId Int
+
+  // Relação com Produto (1 Produto está em N Itens de Carrinho)
+  produto   Produto @relation(fields: [produtoId], references: [id])
+  produtoId Int
+}
+
+model Endereco {
+  id           Int    @id @default(autoincrement())
+  cep          String
+  ruaAvenida   String
+  complemento  String?
+
+  // Relações polimórficas manuais (Um endereço pode pertencer a um ou outro)
+  cliente    Cliente? @relation(fields: [clienteId], references: [id])
+  clienteId  Int?
+  
+  vendedor   Vendedor? @relation(fields: [vendedorId], references: [id])
+  vendedorId Int?
 }
