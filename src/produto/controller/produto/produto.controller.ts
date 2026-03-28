@@ -11,23 +11,23 @@ export class ProdutoController {
 
 
     @Get()
-    getProdutos(){
-        return this.produtoService.fetchProdutos()
+    async getProdutos(){
+        return await this.produtoService.fetchProdutos()
     }
     @Post('create')
     @UsePipes(new ValidationPipe)
-    createProduto(@Body() produtoData:ProdutoDto){
-        return this.produtoService.createProduto(produtoData);
+    async createProduto(@Body() produtoData:ProdutoDto){
+        return await this.produtoService.createProduto(produtoData);
     }
 
     @Delete('delete/:id')
-    deleteProduto(@Param('id',ParseIntPipe) id:number ){
-        return this.produtoService.deleteProduto(id);
+    async deleteProduto(@Param('id',ParseIntPipe) id:number ){
+        return await this.produtoService.deleteProduto(id);
     }
 
     @Put('update/:id')
     @UsePipes(new ValidationPipe)
-    alterarProduto(@Param('id', ParseIntPipe) id: number, @Body() updateProdutoData: UpdateProdutoDto){
-        return  this.produtoService.updateProduto(updateProdutoData, id);
+    async alterarProduto(@Param('id', ParseIntPipe) id: number, @Body() updateProdutoData: UpdateProdutoDto){
+        return await this.produtoService.updateProduto(updateProdutoData, id);
     }
 }

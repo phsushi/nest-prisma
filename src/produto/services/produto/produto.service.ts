@@ -8,11 +8,11 @@ import { UpdateProdutoDto } from 'src/produto/UpdateProdutoDto';
 export class ProdutoService {
     constructor(private prismaService: PrismaService){}
 
-    //metodo de querry/exibição do catalogo
+    
     async fetchProdutos(){
         return await this.prismaService.produto.findMany();
     }
-    //metodo de criação de produto
+    
     async createProduto(data: ProdutoDto){
         const produtoExists = await this.verificaProdutoExiste(data.idProduto);
 
@@ -22,6 +22,7 @@ export class ProdutoService {
 
         return await this.prismaService.produto.create({data})
     }
+
     async deleteProduto(id:number){
         const produtoExists= await this.verificaProdutoExiste(id);
 
@@ -30,6 +31,7 @@ export class ProdutoService {
         }
         return await this.prismaService.produto.delete({where:{idProduto:id}})
     }
+    
     async updateProduto(updateData: UpdateProdutoDto, id:number){
         const produtoExists= await this.verificaProdutoExiste(id);
 
