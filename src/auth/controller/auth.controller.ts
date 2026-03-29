@@ -12,7 +12,7 @@ export class AuthController {
     @Post('login')
     @UsePipes(new ValidationPipe)
     signIn(@Body() singInDto: SignInDto){
-        return this.authService.signIn(singInDto.email, singInDto.password);
+        return this.authService.signIn(singInDto.email, singInDto.senha);
     }
 
     @UseGuards(AuthGuard)

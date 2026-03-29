@@ -1,8 +1,8 @@
-import { IsNotEmpty, IsNumber, IsPositive, IsString } from "class-validator"
+import { IsNotEmpty, IsNumber, IsPositive, IsString, Max, Min } from "class-validator"
 
 export class ProdutoDto {
 
-    idProduto: number
+    id: number
 
     @IsNotEmpty()
     @IsString()
@@ -19,6 +19,13 @@ export class ProdutoDto {
     @IsNotEmpty()
     @IsNumber()
     @IsPositive()
-    qtdProduto: number
+    quantidadeEstoque: number
 
+    @Max(5)
+    @Min(0)
+    avaliacao: number
+
+    @IsNotEmpty()
+    @IsNumber()
+    vendedorId:number
 }

@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsString, MinLength } from "class-validator"
+import { IsEmail, IsNotEmpty, IsPhoneNumber, IsString, MinLength } from "class-validator"
 
 export class UserDto  {
 
@@ -9,11 +9,14 @@ export class UserDto  {
 
     @IsNotEmpty()
     @IsString()
-    username: string
+    nomeCompleto: string
 
     @IsNotEmpty()
     @IsString()
     @MinLength(6,{message: "Mínimo de 6 caracteres para senha."})
-    password: string
+    senha: string
+
+    @IsPhoneNumber()
+    telefone: string
 
 }

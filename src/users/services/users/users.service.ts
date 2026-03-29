@@ -8,40 +8,40 @@ export class UsersService {
     constructor(private prisma: PrismaService){}
 
     async fetchAllUsers(){
-        return await this.prisma.user.findMany();
+        return await this.prisma.usuario.findMany();
     }
     async createUser(data: UserDto){
-        const userAlreadyExists = await this.prisma.user.findUnique({where: {email:data.email}})
+        const userAlreadyExists = await this.prisma.usuario.findUnique({where: {email:data.email}})
 
         if(userAlreadyExists){
             throw new ConflictException('Usuário já existe');
         }
         
         //Hashando a senha 
-        const hashedPass = await bcrypt.hash(data.password, 10)
+        const hashedPass = await bcrypt.hash(data.senha, 10)
 
         //Retirando a senha desprotegida dos dados recebidos
-        const {password, ...userData} = data
+        const {senha, ...userData} = data
 
         //Criando o usuário passando a senha hashada
-        const user = await this.prisma.user.create({
+        const user = await this.prisma.usuario.create({
             data:{
                 ...userData,
-                password: hashedPass
+                senha: hashedPass
             }
         })
 
         //Retornando o usuário criado, tirando a senha
-        const {password:_, ...result} = user
+        const {senha:_, ...result} = user
         return result
     }
     async deleteUser(id:number){
         
         
-        const userAlreadyExists = await this.prisma.user.findUnique({where: {idUser:id}})
+        const userAlreadyExists = await this.prisma.usuario.findUnique({where: {id}})
 
         if(userAlreadyExists){
-            return await this.prisma.user.delete({where: {idUser:id}})
+            return await this.prisma.usuario.delete({where: {id}})
         }
         throw new ConflictException('Usuário não existe');
     }
@@ -49,6 +49,6 @@ export class UsersService {
     // Auth methods //
     
     async findOne(email: UserDto["email"]){
-        return await this.prisma.user.findUnique({where: {email}})
+        return await this.prisma.usuario.findUnique({where: {email}})
     }
 }

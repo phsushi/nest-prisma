@@ -1,4 +1,4 @@
-import { IsNumber, IsOptional, IsPositive, IsString } from "class-validator"
+import { IsNumber, IsOptional, IsPositive, IsString, Max, Min } from "class-validator"
 
 export class UpdateProdutoDto {
 
@@ -18,5 +18,9 @@ export class UpdateProdutoDto {
     @IsNumber()
     @IsPositive()
     @IsOptional()
-    qtdProdutos?:number
+    quantidadeEstoque?:number
+
+    @Max(5)
+    @Min(0)
+    avaliacao?:number
 }

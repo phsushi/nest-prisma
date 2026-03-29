@@ -7,6 +7,6 @@ export class SignInDto  {
 
     @IsNotEmpty()
     @IsString()
-    password: string
+    senha: string
 
 }

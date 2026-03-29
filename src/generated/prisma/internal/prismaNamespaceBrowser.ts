@@ -51,8 +51,11 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  User: 'User',
-  Produto: 'Produto'
+  Usuario: 'Usuario',
+  Vendedor: 'Vendedor',
+  Produto: 'Produto',
+  CarrinhoItem: 'CarrinhoItem',
+  Endereco: 'Endereco'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -68,25 +71,64 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const UserScalarFieldEnum = {
-  idUser: 'idUser',
+export const UsuarioScalarFieldEnum = {
+  id: 'id',
+  nomeCompleto: 'nomeCompleto',
   email: 'email',
-  username: 'username',
-  password: 'password'
+  senha: 'senha',
+  telefone: 'telefone'
 } as const
 
-export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
+
+
+export const VendedorScalarFieldEnum = {
+  id: 'id',
+  nomeCompleto: 'nomeCompleto',
+  email: 'email',
+  senha: 'senha',
+  telefone: 'telefone',
+  cpf: 'cpf',
+  avaliacao: 'avaliacao'
+} as const
+
+export type VendedorScalarFieldEnum = (typeof VendedorScalarFieldEnum)[keyof typeof VendedorScalarFieldEnum]
 
 
 export const ProdutoScalarFieldEnum = {
-  idProduto: 'idProduto',
+  id: 'id',
   nomeProduto: 'nomeProduto',
   descricao: 'descricao',
   preco: 'preco',
-  qtdProduto: 'qtdProduto'
+  quantidadeEstoque: 'quantidadeEstoque',
+  avaliacao: 'avaliacao',
+  vendedorId: 'vendedorId'
 } as const
 
 export type ProdutoScalarFieldEnum = (typeof ProdutoScalarFieldEnum)[keyof typeof ProdutoScalarFieldEnum]
+
+
+export const CarrinhoItemScalarFieldEnum = {
+  id: 'id',
+  quantidade: 'quantidade',
+  dataAdicionado: 'dataAdicionado',
+  usuarioId: 'usuarioId',
+  produtoId: 'produtoId'
+} as const
+
+export type CarrinhoItemScalarFieldEnum = (typeof CarrinhoItemScalarFieldEnum)[keyof typeof CarrinhoItemScalarFieldEnum]
+
+
+export const EnderecoScalarFieldEnum = {
+  id: 'id',
+  cep: 'cep',
+  ruaAvenida: 'ruaAvenida',
+  complemento: 'complemento',
+  usuarioId: 'usuarioId',
+  vendedorId: 'vendedorId'
+} as const
+
+export type EnderecoScalarFieldEnum = (typeof EnderecoScalarFieldEnum)[keyof typeof EnderecoScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -95,4 +137,12 @@ export const SortOrder = {
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
