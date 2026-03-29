@@ -56,9 +56,9 @@ model CarrinhoItem {
   quantidade     Int
   dataAdicionado DateTime @default(now())
 
-  // Relação com Cliente (1 Cliente tem N Itens no Carrinho)
-  cliente   Cliente @relation(fields: [clienteId], references: [id])
-  clienteId Int
+  // Relação com Usuario (1 Usuario tem N Itens no Carrinho)
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+  usuarioId Int
 
   // Relação com Produto (1 Produto está em N Itens de Carrinho)
   produto   Produto @relation(fields: [produtoId], references: [id])
@@ -72,8 +72,8 @@ model Endereco {
   complemento  String?
 
   // Relações polimórficas manuais (Um endereço pode pertencer a um ou outro)
-  cliente    Cliente? @relation(fields: [clienteId], references: [id])
-  clienteId  Int?
+  usuario    Usuario? @relation(fields: [usuarioId], references: [id])
+  usuarioId  Int?
   
   vendedor   Vendedor? @relation(fields: [vendedorId], references: [id])
   vendedorId Int?
