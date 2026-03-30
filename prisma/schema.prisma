@@ -9,31 +9,34 @@ datasource db {
   provider = "sqlite"
 }
 
+enum Role {
+  CLIENTE
+  VENDEDOR
+}
+
+
 model Usuario {
   id           Int           @id @default(autoincrement())
   nomeCompleto String
   email        String        @unique
   senha        String
   telefone     String
-  
+  role         Role          @default(CLIENTE)  
+
+  // Atributos da role vendedor
+  cpf          String?     @unique
+  avaliacao    Float?      @default(0.0)
+
+
   // Relações
   carrinhoItens CarrinhoItem[]
   enderecos     Endereco[]
-}
 
-model Vendedor {
-  id           Int        @id @default(autoincrement())
-  nomeCompleto String
-  email        String     @unique
-  senha        String
-  telefone     String
-  cpf          String     @unique
-  avaliacao    Float      @default(0.0)
 
-  // Relações
+  // Role de vendedor
   produtos     Produto[]
-  enderecos    Endereco[]
 }
+
 
 model Produto {
   id                 Int      @id @default(autoincrement())
@@ -44,8 +47,8 @@ model Produto {
   avaliacao          Float    @default(0.0)
 
   // Relação com Vendedor (1 Vendedor cadastrou N Produtos)
-  vendedor   Vendedor @relation(fields: [vendedorId], references: [id])
-  vendedorId Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+  usuarioId Int
 
   // Relação com Itens de Carrinho
   carrinhoItens CarrinhoItem[]
@@ -71,10 +74,8 @@ model Endereco {
   ruaAvenida   String
   complemento  String?
 
-  // Relações polimórficas manuais (Um endereço pode pertencer a um ou outro)
+  // Relações 
   usuario    Usuario? @relation(fields: [usuarioId], references: [id])
   usuarioId  Int?
-  
-  vendedor   Vendedor? @relation(fields: [vendedorId], references: [id])
-  vendedorId Int?
+
 }
