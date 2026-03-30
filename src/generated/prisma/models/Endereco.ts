@@ -29,13 +29,11 @@ export type AggregateEndereco = {
 export type EnderecoAvgAggregateOutputType = {
   id: number | null
   usuarioId: number | null
-  vendedorId: number | null
 }
 
 export type EnderecoSumAggregateOutputType = {
   id: number | null
   usuarioId: number | null
-  vendedorId: number | null
 }
 
 export type EnderecoMinAggregateOutputType = {
@@ -44,7 +42,6 @@ export type EnderecoMinAggregateOutputType = {
   ruaAvenida: string | null
   complemento: string | null
   usuarioId: number | null
-  vendedorId: number | null
 }
 
 export type EnderecoMaxAggregateOutputType = {
@@ -53,7 +50,6 @@ export type EnderecoMaxAggregateOutputType = {
   ruaAvenida: string | null
   complemento: string | null
   usuarioId: number | null
-  vendedorId: number | null
 }
 
 export type EnderecoCountAggregateOutputType = {
@@ -62,7 +58,6 @@ export type EnderecoCountAggregateOutputType = {
   ruaAvenida: number
   complemento: number
   usuarioId: number
-  vendedorId: number
   _all: number
 }
 
@@ -70,13 +65,11 @@ export type EnderecoCountAggregateOutputType = {
 export type EnderecoAvgAggregateInputType = {
   id?: true
   usuarioId?: true
-  vendedorId?: true
 }
 
 export type EnderecoSumAggregateInputType = {
   id?: true
   usuarioId?: true
-  vendedorId?: true
 }
 
 export type EnderecoMinAggregateInputType = {
@@ -85,7 +78,6 @@ export type EnderecoMinAggregateInputType = {
   ruaAvenida?: true
   complemento?: true
   usuarioId?: true
-  vendedorId?: true
 }
 
 export type EnderecoMaxAggregateInputType = {
@@ -94,7 +86,6 @@ export type EnderecoMaxAggregateInputType = {
   ruaAvenida?: true
   complemento?: true
   usuarioId?: true
-  vendedorId?: true
 }
 
 export type EnderecoCountAggregateInputType = {
@@ -103,7 +94,6 @@ export type EnderecoCountAggregateInputType = {
   ruaAvenida?: true
   complemento?: true
   usuarioId?: true
-  vendedorId?: true
   _all?: true
 }
 
@@ -199,7 +189,6 @@ export type EnderecoGroupByOutputType = {
   ruaAvenida: string
   complemento: string | null
   usuarioId: number | null
-  vendedorId: number | null
   _count: EnderecoCountAggregateOutputType | null
   _avg: EnderecoAvgAggregateOutputType | null
   _sum: EnderecoSumAggregateOutputType | null
@@ -231,9 +220,7 @@ export type EnderecoWhereInput = {
   ruaAvenida?: Prisma.StringFilter<"Endereco"> | string
   complemento?: Prisma.StringNullableFilter<"Endereco"> | string | null
   usuarioId?: Prisma.IntNullableFilter<"Endereco"> | number | null
-  vendedorId?: Prisma.IntNullableFilter<"Endereco"> | number | null
   usuario?: Prisma.XOR<Prisma.UsuarioNullableScalarRelationFilter, Prisma.UsuarioWhereInput> | null
-  vendedor?: Prisma.XOR<Prisma.VendedorNullableScalarRelationFilter, Prisma.VendedorWhereInput> | null
 }
 
 export type EnderecoOrderByWithRelationInput = {
@@ -242,9 +229,7 @@ export type EnderecoOrderByWithRelationInput = {
   ruaAvenida?: Prisma.SortOrder
   complemento?: Prisma.SortOrderInput | Prisma.SortOrder
   usuarioId?: Prisma.SortOrderInput | Prisma.SortOrder
-  vendedorId?: Prisma.SortOrderInput | Prisma.SortOrder
   usuario?: Prisma.UsuarioOrderByWithRelationInput
-  vendedor?: Prisma.VendedorOrderByWithRelationInput
 }
 
 export type EnderecoWhereUniqueInput = Prisma.AtLeast<{
@@ -256,9 +241,7 @@ export type EnderecoWhereUniqueInput = Prisma.AtLeast<{
   ruaAvenida?: Prisma.StringFilter<"Endereco"> | string
   complemento?: Prisma.StringNullableFilter<"Endereco"> | string | null
   usuarioId?: Prisma.IntNullableFilter<"Endereco"> | number | null
-  vendedorId?: Prisma.IntNullableFilter<"Endereco"> | number | null
   usuario?: Prisma.XOR<Prisma.UsuarioNullableScalarRelationFilter, Prisma.UsuarioWhereInput> | null
-  vendedor?: Prisma.XOR<Prisma.VendedorNullableScalarRelationFilter, Prisma.VendedorWhereInput> | null
 }, "id">
 
 export type EnderecoOrderByWithAggregationInput = {
@@ -267,7 +250,6 @@ export type EnderecoOrderByWithAggregationInput = {
   ruaAvenida?: Prisma.SortOrder
   complemento?: Prisma.SortOrderInput | Prisma.SortOrder
   usuarioId?: Prisma.SortOrderInput | Prisma.SortOrder
-  vendedorId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.EnderecoCountOrderByAggregateInput
   _avg?: Prisma.EnderecoAvgOrderByAggregateInput
   _max?: Prisma.EnderecoMaxOrderByAggregateInput
@@ -284,7 +266,6 @@ export type EnderecoScalarWhereWithAggregatesInput = {
   ruaAvenida?: Prisma.StringWithAggregatesFilter<"Endereco"> | string
   complemento?: Prisma.StringNullableWithAggregatesFilter<"Endereco"> | string | null
   usuarioId?: Prisma.IntNullableWithAggregatesFilter<"Endereco"> | number | null
-  vendedorId?: Prisma.IntNullableWithAggregatesFilter<"Endereco"> | number | null
 }
 
 export type EnderecoCreateInput = {
@@ -292,7 +273,6 @@ export type EnderecoCreateInput = {
   ruaAvenida: string
   complemento?: string | null
   usuario?: Prisma.UsuarioCreateNestedOneWithoutEnderecosInput
-  vendedor?: Prisma.VendedorCreateNestedOneWithoutEnderecosInput
 }
 
 export type EnderecoUncheckedCreateInput = {
@@ -301,7 +281,6 @@ export type EnderecoUncheckedCreateInput = {
   ruaAvenida: string
   complemento?: string | null
   usuarioId?: number | null
-  vendedorId?: number | null
 }
 
 export type EnderecoUpdateInput = {
@@ -309,7 +288,6 @@ export type EnderecoUpdateInput = {
   ruaAvenida?: Prisma.StringFieldUpdateOperationsInput | string
   complemento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usuario?: Prisma.UsuarioUpdateOneWithoutEnderecosNestedInput
-  vendedor?: Prisma.VendedorUpdateOneWithoutEnderecosNestedInput
 }
 
 export type EnderecoUncheckedUpdateInput = {
@@ -318,7 +296,6 @@ export type EnderecoUncheckedUpdateInput = {
   ruaAvenida?: Prisma.StringFieldUpdateOperationsInput | string
   complemento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usuarioId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  vendedorId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type EnderecoCreateManyInput = {
@@ -327,7 +304,6 @@ export type EnderecoCreateManyInput = {
   ruaAvenida: string
   complemento?: string | null
   usuarioId?: number | null
-  vendedorId?: number | null
 }
 
 export type EnderecoUpdateManyMutationInput = {
@@ -342,7 +318,6 @@ export type EnderecoUncheckedUpdateManyInput = {
   ruaAvenida?: Prisma.StringFieldUpdateOperationsInput | string
   complemento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usuarioId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  vendedorId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type EnderecoListRelationFilter = {
@@ -361,13 +336,11 @@ export type EnderecoCountOrderByAggregateInput = {
   ruaAvenida?: Prisma.SortOrder
   complemento?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
-  vendedorId?: Prisma.SortOrder
 }
 
 export type EnderecoAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
-  vendedorId?: Prisma.SortOrder
 }
 
 export type EnderecoMaxOrderByAggregateInput = {
@@ -376,7 +349,6 @@ export type EnderecoMaxOrderByAggregateInput = {
   ruaAvenida?: Prisma.SortOrder
   complemento?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
-  vendedorId?: Prisma.SortOrder
 }
 
 export type EnderecoMinOrderByAggregateInput = {
@@ -385,13 +357,11 @@ export type EnderecoMinOrderByAggregateInput = {
   ruaAvenida?: Prisma.SortOrder
   complemento?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
-  vendedorId?: Prisma.SortOrder
 }
 
 export type EnderecoSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
-  vendedorId?: Prisma.SortOrder
 }
 
 export type EnderecoCreateNestedManyWithoutUsuarioInput = {
@@ -436,52 +406,6 @@ export type EnderecoUncheckedUpdateManyWithoutUsuarioNestedInput = {
   deleteMany?: Prisma.EnderecoScalarWhereInput | Prisma.EnderecoScalarWhereInput[]
 }
 
-export type EnderecoCreateNestedManyWithoutVendedorInput = {
-  create?: Prisma.XOR<Prisma.EnderecoCreateWithoutVendedorInput, Prisma.EnderecoUncheckedCreateWithoutVendedorInput> | Prisma.EnderecoCreateWithoutVendedorInput[] | Prisma.EnderecoUncheckedCreateWithoutVendedorInput[]
-  connectOrCreate?: Prisma.EnderecoCreateOrConnectWithoutVendedorInput | Prisma.EnderecoCreateOrConnectWithoutVendedorInput[]
-  createMany?: Prisma.EnderecoCreateManyVendedorInputEnvelope
-  connect?: Prisma.EnderecoWhereUniqueInput | Prisma.EnderecoWhereUniqueInput[]
-}
-
-export type EnderecoUncheckedCreateNestedManyWithoutVendedorInput = {
-  create?: Prisma.XOR<Prisma.EnderecoCreateWithoutVendedorInput, Prisma.EnderecoUncheckedCreateWithoutVendedorInput> | Prisma.EnderecoCreateWithoutVendedorInput[] | Prisma.EnderecoUncheckedCreateWithoutVendedorInput[]
-  connectOrCreate?: Prisma.EnderecoCreateOrConnectWithoutVendedorInput | Prisma.EnderecoCreateOrConnectWithoutVendedorInput[]
-  createMany?: Prisma.EnderecoCreateManyVendedorInputEnvelope
-  connect?: Prisma.EnderecoWhereUniqueInput | Prisma.EnderecoWhereUniqueInput[]
-}
-
-export type EnderecoUpdateManyWithoutVendedorNestedInput = {
-  create?: Prisma.XOR<Prisma.EnderecoCreateWithoutVendedorInput, Prisma.EnderecoUncheckedCreateWithoutVendedorInput> | Prisma.EnderecoCreateWithoutVendedorInput[] | Prisma.EnderecoUncheckedCreateWithoutVendedorInput[]
-  connectOrCreate?: Prisma.EnderecoCreateOrConnectWithoutVendedorInput | Prisma.EnderecoCreateOrConnectWithoutVendedorInput[]
-  upsert?: Prisma.EnderecoUpsertWithWhereUniqueWithoutVendedorInput | Prisma.EnderecoUpsertWithWhereUniqueWithoutVendedorInput[]
-  createMany?: Prisma.EnderecoCreateManyVendedorInputEnvelope
-  set?: Prisma.EnderecoWhereUniqueInput | Prisma.EnderecoWhereUniqueInput[]
-  disconnect?: Prisma.EnderecoWhereUniqueInput | Prisma.EnderecoWhereUniqueInput[]
-  delete?: Prisma.EnderecoWhereUniqueInput | Prisma.EnderecoWhereUniqueInput[]
-  connect?: Prisma.EnderecoWhereUniqueInput | Prisma.EnderecoWhereUniqueInput[]
-  update?: Prisma.EnderecoUpdateWithWhereUniqueWithoutVendedorInput | Prisma.EnderecoUpdateWithWhereUniqueWithoutVendedorInput[]
-  updateMany?: Prisma.EnderecoUpdateManyWithWhereWithoutVendedorInput | Prisma.EnderecoUpdateManyWithWhereWithoutVendedorInput[]
-  deleteMany?: Prisma.EnderecoScalarWhereInput | Prisma.EnderecoScalarWhereInput[]
-}
-
-export type EnderecoUncheckedUpdateManyWithoutVendedorNestedInput = {
-  create?: Prisma.XOR<Prisma.EnderecoCreateWithoutVendedorInput, Prisma.EnderecoUncheckedCreateWithoutVendedorInput> | Prisma.EnderecoCreateWithoutVendedorInput[] | Prisma.EnderecoUncheckedCreateWithoutVendedorInput[]
-  connectOrCreate?: Prisma.EnderecoCreateOrConnectWithoutVendedorInput | Prisma.EnderecoCreateOrConnectWithoutVendedorInput[]
-  upsert?: Prisma.EnderecoUpsertWithWhereUniqueWithoutVendedorInput | Prisma.EnderecoUpsertWithWhereUniqueWithoutVendedorInput[]
-  createMany?: Prisma.EnderecoCreateManyVendedorInputEnvelope
-  set?: Prisma.EnderecoWhereUniqueInput | Prisma.EnderecoWhereUniqueInput[]
-  disconnect?: Prisma.EnderecoWhereUniqueInput | Prisma.EnderecoWhereUniqueInput[]
-  delete?: Prisma.EnderecoWhereUniqueInput | Prisma.EnderecoWhereUniqueInput[]
-  connect?: Prisma.EnderecoWhereUniqueInput | Prisma.EnderecoWhereUniqueInput[]
-  update?: Prisma.EnderecoUpdateWithWhereUniqueWithoutVendedorInput | Prisma.EnderecoUpdateWithWhereUniqueWithoutVendedorInput[]
-  updateMany?: Prisma.EnderecoUpdateManyWithWhereWithoutVendedorInput | Prisma.EnderecoUpdateManyWithWhereWithoutVendedorInput[]
-  deleteMany?: Prisma.EnderecoScalarWhereInput | Prisma.EnderecoScalarWhereInput[]
-}
-
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type NullableIntFieldUpdateOperationsInput = {
   set?: number | null
   increment?: number
@@ -494,7 +418,6 @@ export type EnderecoCreateWithoutUsuarioInput = {
   cep: string
   ruaAvenida: string
   complemento?: string | null
-  vendedor?: Prisma.VendedorCreateNestedOneWithoutEnderecosInput
 }
 
 export type EnderecoUncheckedCreateWithoutUsuarioInput = {
@@ -502,7 +425,6 @@ export type EnderecoUncheckedCreateWithoutUsuarioInput = {
   cep: string
   ruaAvenida: string
   complemento?: string | null
-  vendedorId?: number | null
 }
 
 export type EnderecoCreateOrConnectWithoutUsuarioInput = {
@@ -539,47 +461,6 @@ export type EnderecoScalarWhereInput = {
   ruaAvenida?: Prisma.StringFilter<"Endereco"> | string
   complemento?: Prisma.StringNullableFilter<"Endereco"> | string | null
   usuarioId?: Prisma.IntNullableFilter<"Endereco"> | number | null
-  vendedorId?: Prisma.IntNullableFilter<"Endereco"> | number | null
-}
-
-export type EnderecoCreateWithoutVendedorInput = {
-  cep: string
-  ruaAvenida: string
-  complemento?: string | null
-  usuario?: Prisma.UsuarioCreateNestedOneWithoutEnderecosInput
-}
-
-export type EnderecoUncheckedCreateWithoutVendedorInput = {
-  id?: number
-  cep: string
-  ruaAvenida: string
-  complemento?: string | null
-  usuarioId?: number | null
-}
-
-export type EnderecoCreateOrConnectWithoutVendedorInput = {
-  where: Prisma.EnderecoWhereUniqueInput
-  create: Prisma.XOR<Prisma.EnderecoCreateWithoutVendedorInput, Prisma.EnderecoUncheckedCreateWithoutVendedorInput>
-}
-
-export type EnderecoCreateManyVendedorInputEnvelope = {
-  data: Prisma.EnderecoCreateManyVendedorInput | Prisma.EnderecoCreateManyVendedorInput[]
-}
-
-export type EnderecoUpsertWithWhereUniqueWithoutVendedorInput = {
-  where: Prisma.EnderecoWhereUniqueInput
-  update: Prisma.XOR<Prisma.EnderecoUpdateWithoutVendedorInput, Prisma.EnderecoUncheckedUpdateWithoutVendedorInput>
-  create: Prisma.XOR<Prisma.EnderecoCreateWithoutVendedorInput, Prisma.EnderecoUncheckedCreateWithoutVendedorInput>
-}
-
-export type EnderecoUpdateWithWhereUniqueWithoutVendedorInput = {
-  where: Prisma.EnderecoWhereUniqueInput
-  data: Prisma.XOR<Prisma.EnderecoUpdateWithoutVendedorInput, Prisma.EnderecoUncheckedUpdateWithoutVendedorInput>
-}
-
-export type EnderecoUpdateManyWithWhereWithoutVendedorInput = {
-  where: Prisma.EnderecoScalarWhereInput
-  data: Prisma.XOR<Prisma.EnderecoUpdateManyMutationInput, Prisma.EnderecoUncheckedUpdateManyWithoutVendedorInput>
 }
 
 export type EnderecoCreateManyUsuarioInput = {
@@ -587,14 +468,12 @@ export type EnderecoCreateManyUsuarioInput = {
   cep: string
   ruaAvenida: string
   complemento?: string | null
-  vendedorId?: number | null
 }
 
 export type EnderecoUpdateWithoutUsuarioInput = {
   cep?: Prisma.StringFieldUpdateOperationsInput | string
   ruaAvenida?: Prisma.StringFieldUpdateOperationsInput | string
   complemento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  vendedor?: Prisma.VendedorUpdateOneWithoutEnderecosNestedInput
 }
 
 export type EnderecoUncheckedUpdateWithoutUsuarioInput = {
@@ -602,7 +481,6 @@ export type EnderecoUncheckedUpdateWithoutUsuarioInput = {
   cep?: Prisma.StringFieldUpdateOperationsInput | string
   ruaAvenida?: Prisma.StringFieldUpdateOperationsInput | string
   complemento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  vendedorId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type EnderecoUncheckedUpdateManyWithoutUsuarioInput = {
@@ -610,38 +488,6 @@ export type EnderecoUncheckedUpdateManyWithoutUsuarioInput = {
   cep?: Prisma.StringFieldUpdateOperationsInput | string
   ruaAvenida?: Prisma.StringFieldUpdateOperationsInput | string
   complemento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  vendedorId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-}
-
-export type EnderecoCreateManyVendedorInput = {
-  id?: number
-  cep: string
-  ruaAvenida: string
-  complemento?: string | null
-  usuarioId?: number | null
-}
-
-export type EnderecoUpdateWithoutVendedorInput = {
-  cep?: Prisma.StringFieldUpdateOperationsInput | string
-  ruaAvenida?: Prisma.StringFieldUpdateOperationsInput | string
-  complemento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  usuario?: Prisma.UsuarioUpdateOneWithoutEnderecosNestedInput
-}
-
-export type EnderecoUncheckedUpdateWithoutVendedorInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  cep?: Prisma.StringFieldUpdateOperationsInput | string
-  ruaAvenida?: Prisma.StringFieldUpdateOperationsInput | string
-  complemento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  usuarioId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-}
-
-export type EnderecoUncheckedUpdateManyWithoutVendedorInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  cep?: Prisma.StringFieldUpdateOperationsInput | string
-  ruaAvenida?: Prisma.StringFieldUpdateOperationsInput | string
-  complemento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  usuarioId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 
@@ -652,9 +498,7 @@ export type EnderecoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   ruaAvenida?: boolean
   complemento?: boolean
   usuarioId?: boolean
-  vendedorId?: boolean
   usuario?: boolean | Prisma.Endereco$usuarioArgs<ExtArgs>
-  vendedor?: boolean | Prisma.Endereco$vendedorArgs<ExtArgs>
 }, ExtArgs["result"]["endereco"]>
 
 export type EnderecoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -663,9 +507,7 @@ export type EnderecoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   ruaAvenida?: boolean
   complemento?: boolean
   usuarioId?: boolean
-  vendedorId?: boolean
   usuario?: boolean | Prisma.Endereco$usuarioArgs<ExtArgs>
-  vendedor?: boolean | Prisma.Endereco$vendedorArgs<ExtArgs>
 }, ExtArgs["result"]["endereco"]>
 
 export type EnderecoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -674,9 +516,7 @@ export type EnderecoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   ruaAvenida?: boolean
   complemento?: boolean
   usuarioId?: boolean
-  vendedorId?: boolean
   usuario?: boolean | Prisma.Endereco$usuarioArgs<ExtArgs>
-  vendedor?: boolean | Prisma.Endereco$vendedorArgs<ExtArgs>
 }, ExtArgs["result"]["endereco"]>
 
 export type EnderecoSelectScalar = {
@@ -685,28 +525,23 @@ export type EnderecoSelectScalar = {
   ruaAvenida?: boolean
   complemento?: boolean
   usuarioId?: boolean
-  vendedorId?: boolean
 }
 
-export type EnderecoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "cep" | "ruaAvenida" | "complemento" | "usuarioId" | "vendedorId", ExtArgs["result"]["endereco"]>
+export type EnderecoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "cep" | "ruaAvenida" | "complemento" | "usuarioId", ExtArgs["result"]["endereco"]>
 export type EnderecoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   usuario?: boolean | Prisma.Endereco$usuarioArgs<ExtArgs>
-  vendedor?: boolean | Prisma.Endereco$vendedorArgs<ExtArgs>
 }
 export type EnderecoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   usuario?: boolean | Prisma.Endereco$usuarioArgs<ExtArgs>
-  vendedor?: boolean | Prisma.Endereco$vendedorArgs<ExtArgs>
 }
 export type EnderecoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   usuario?: boolean | Prisma.Endereco$usuarioArgs<ExtArgs>
-  vendedor?: boolean | Prisma.Endereco$vendedorArgs<ExtArgs>
 }
 
 export type $EnderecoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Endereco"
   objects: {
     usuario: Prisma.$UsuarioPayload<ExtArgs> | null
-    vendedor: Prisma.$VendedorPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -714,7 +549,6 @@ export type $EnderecoPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     ruaAvenida: string
     complemento: string | null
     usuarioId: number | null
-    vendedorId: number | null
   }, ExtArgs["result"]["endereco"]>
   composites: {}
 }
@@ -1110,7 +944,6 @@ readonly fields: EnderecoFieldRefs;
 export interface Prisma__EnderecoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   usuario<T extends Prisma.Endereco$usuarioArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Endereco$usuarioArgs<ExtArgs>>): Prisma.Prisma__UsuarioClient<runtime.Types.Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  vendedor<T extends Prisma.Endereco$vendedorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Endereco$vendedorArgs<ExtArgs>>): Prisma.Prisma__VendedorClient<runtime.Types.Result.GetResult<Prisma.$VendedorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1145,7 +978,6 @@ export interface EnderecoFieldRefs {
   readonly ruaAvenida: Prisma.FieldRef<"Endereco", 'String'>
   readonly complemento: Prisma.FieldRef<"Endereco", 'String'>
   readonly usuarioId: Prisma.FieldRef<"Endereco", 'Int'>
-  readonly vendedorId: Prisma.FieldRef<"Endereco", 'Int'>
 }
     
 
@@ -1556,25 +1388,6 @@ export type Endereco$usuarioArgs<ExtArgs extends runtime.Types.Extensions.Intern
    */
   include?: Prisma.UsuarioInclude<ExtArgs> | null
   where?: Prisma.UsuarioWhereInput
-}
-
-/**
- * Endereco.vendedor
- */
-export type Endereco$vendedorArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Vendedor
-   */
-  select?: Prisma.VendedorSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Vendedor
-   */
-  omit?: Prisma.VendedorOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.VendedorInclude<ExtArgs> | null
-  where?: Prisma.VendedorWhereInput
 }
 
 /**

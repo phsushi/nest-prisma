@@ -28,10 +28,12 @@ export type AggregateUsuario = {
 
 export type UsuarioAvgAggregateOutputType = {
   id: number | null
+  avaliacao: number | null
 }
 
 export type UsuarioSumAggregateOutputType = {
   id: number | null
+  avaliacao: number | null
 }
 
 export type UsuarioMinAggregateOutputType = {
@@ -40,6 +42,9 @@ export type UsuarioMinAggregateOutputType = {
   email: string | null
   senha: string | null
   telefone: string | null
+  role: $Enums.Role | null
+  cpf: string | null
+  avaliacao: number | null
 }
 
 export type UsuarioMaxAggregateOutputType = {
@@ -48,6 +53,9 @@ export type UsuarioMaxAggregateOutputType = {
   email: string | null
   senha: string | null
   telefone: string | null
+  role: $Enums.Role | null
+  cpf: string | null
+  avaliacao: number | null
 }
 
 export type UsuarioCountAggregateOutputType = {
@@ -56,16 +64,21 @@ export type UsuarioCountAggregateOutputType = {
   email: number
   senha: number
   telefone: number
+  role: number
+  cpf: number
+  avaliacao: number
   _all: number
 }
 
 
 export type UsuarioAvgAggregateInputType = {
   id?: true
+  avaliacao?: true
 }
 
 export type UsuarioSumAggregateInputType = {
   id?: true
+  avaliacao?: true
 }
 
 export type UsuarioMinAggregateInputType = {
@@ -74,6 +87,9 @@ export type UsuarioMinAggregateInputType = {
   email?: true
   senha?: true
   telefone?: true
+  role?: true
+  cpf?: true
+  avaliacao?: true
 }
 
 export type UsuarioMaxAggregateInputType = {
@@ -82,6 +98,9 @@ export type UsuarioMaxAggregateInputType = {
   email?: true
   senha?: true
   telefone?: true
+  role?: true
+  cpf?: true
+  avaliacao?: true
 }
 
 export type UsuarioCountAggregateInputType = {
@@ -90,6 +109,9 @@ export type UsuarioCountAggregateInputType = {
   email?: true
   senha?: true
   telefone?: true
+  role?: true
+  cpf?: true
+  avaliacao?: true
   _all?: true
 }
 
@@ -185,6 +207,9 @@ export type UsuarioGroupByOutputType = {
   email: string
   senha: string
   telefone: string
+  role: $Enums.Role
+  cpf: string | null
+  avaliacao: number | null
   _count: UsuarioCountAggregateOutputType | null
   _avg: UsuarioAvgAggregateOutputType | null
   _sum: UsuarioSumAggregateOutputType | null
@@ -216,8 +241,12 @@ export type UsuarioWhereInput = {
   email?: Prisma.StringFilter<"Usuario"> | string
   senha?: Prisma.StringFilter<"Usuario"> | string
   telefone?: Prisma.StringFilter<"Usuario"> | string
+  role?: Prisma.EnumRoleFilter<"Usuario"> | $Enums.Role
+  cpf?: Prisma.StringNullableFilter<"Usuario"> | string | null
+  avaliacao?: Prisma.FloatNullableFilter<"Usuario"> | number | null
   carrinhoItens?: Prisma.CarrinhoItemListRelationFilter
   enderecos?: Prisma.EnderecoListRelationFilter
+  produtos?: Prisma.ProdutoListRelationFilter
 }
 
 export type UsuarioOrderByWithRelationInput = {
@@ -226,22 +255,30 @@ export type UsuarioOrderByWithRelationInput = {
   email?: Prisma.SortOrder
   senha?: Prisma.SortOrder
   telefone?: Prisma.SortOrder
+  role?: Prisma.SortOrder
+  cpf?: Prisma.SortOrderInput | Prisma.SortOrder
+  avaliacao?: Prisma.SortOrderInput | Prisma.SortOrder
   carrinhoItens?: Prisma.CarrinhoItemOrderByRelationAggregateInput
   enderecos?: Prisma.EnderecoOrderByRelationAggregateInput
+  produtos?: Prisma.ProdutoOrderByRelationAggregateInput
 }
 
 export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
   id?: number
   email?: string
+  cpf?: string
   AND?: Prisma.UsuarioWhereInput | Prisma.UsuarioWhereInput[]
   OR?: Prisma.UsuarioWhereInput[]
   NOT?: Prisma.UsuarioWhereInput | Prisma.UsuarioWhereInput[]
   nomeCompleto?: Prisma.StringFilter<"Usuario"> | string
   senha?: Prisma.StringFilter<"Usuario"> | string
   telefone?: Prisma.StringFilter<"Usuario"> | string
+  role?: Prisma.EnumRoleFilter<"Usuario"> | $Enums.Role
+  avaliacao?: Prisma.FloatNullableFilter<"Usuario"> | number | null
   carrinhoItens?: Prisma.CarrinhoItemListRelationFilter
   enderecos?: Prisma.EnderecoListRelationFilter
-}, "id" | "email">
+  produtos?: Prisma.ProdutoListRelationFilter
+}, "id" | "email" | "cpf">
 
 export type UsuarioOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -249,6 +286,9 @@ export type UsuarioOrderByWithAggregationInput = {
   email?: Prisma.SortOrder
   senha?: Prisma.SortOrder
   telefone?: Prisma.SortOrder
+  role?: Prisma.SortOrder
+  cpf?: Prisma.SortOrderInput | Prisma.SortOrder
+  avaliacao?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.UsuarioCountOrderByAggregateInput
   _avg?: Prisma.UsuarioAvgOrderByAggregateInput
   _max?: Prisma.UsuarioMaxOrderByAggregateInput
@@ -265,6 +305,9 @@ export type UsuarioScalarWhereWithAggregatesInput = {
   email?: Prisma.StringWithAggregatesFilter<"Usuario"> | string
   senha?: Prisma.StringWithAggregatesFilter<"Usuario"> | string
   telefone?: Prisma.StringWithAggregatesFilter<"Usuario"> | string
+  role?: Prisma.EnumRoleWithAggregatesFilter<"Usuario"> | $Enums.Role
+  cpf?: Prisma.StringNullableWithAggregatesFilter<"Usuario"> | string | null
+  avaliacao?: Prisma.FloatNullableWithAggregatesFilter<"Usuario"> | number | null
 }
 
 export type UsuarioCreateInput = {
@@ -272,8 +315,12 @@ export type UsuarioCreateInput = {
   email: string
   senha: string
   telefone: string
+  role?: $Enums.Role
+  cpf?: string | null
+  avaliacao?: number | null
   carrinhoItens?: Prisma.CarrinhoItemCreateNestedManyWithoutUsuarioInput
   enderecos?: Prisma.EnderecoCreateNestedManyWithoutUsuarioInput
+  produtos?: Prisma.ProdutoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateInput = {
@@ -282,8 +329,12 @@ export type UsuarioUncheckedCreateInput = {
   email: string
   senha: string
   telefone: string
+  role?: $Enums.Role
+  cpf?: string | null
+  avaliacao?: number | null
   carrinhoItens?: Prisma.CarrinhoItemUncheckedCreateNestedManyWithoutUsuarioInput
   enderecos?: Prisma.EnderecoUncheckedCreateNestedManyWithoutUsuarioInput
+  produtos?: Prisma.ProdutoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUpdateInput = {
@@ -291,8 +342,12 @@ export type UsuarioUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   senha?: Prisma.StringFieldUpdateOperationsInput | string
   telefone?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avaliacao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   carrinhoItens?: Prisma.CarrinhoItemUpdateManyWithoutUsuarioNestedInput
   enderecos?: Prisma.EnderecoUpdateManyWithoutUsuarioNestedInput
+  produtos?: Prisma.ProdutoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateInput = {
@@ -301,8 +356,12 @@ export type UsuarioUncheckedUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   senha?: Prisma.StringFieldUpdateOperationsInput | string
   telefone?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avaliacao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   carrinhoItens?: Prisma.CarrinhoItemUncheckedUpdateManyWithoutUsuarioNestedInput
   enderecos?: Prisma.EnderecoUncheckedUpdateManyWithoutUsuarioNestedInput
+  produtos?: Prisma.ProdutoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateManyInput = {
@@ -311,6 +370,9 @@ export type UsuarioCreateManyInput = {
   email: string
   senha: string
   telefone: string
+  role?: $Enums.Role
+  cpf?: string | null
+  avaliacao?: number | null
 }
 
 export type UsuarioUpdateManyMutationInput = {
@@ -318,6 +380,9 @@ export type UsuarioUpdateManyMutationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   senha?: Prisma.StringFieldUpdateOperationsInput | string
   telefone?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avaliacao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type UsuarioUncheckedUpdateManyInput = {
@@ -326,6 +391,9 @@ export type UsuarioUncheckedUpdateManyInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   senha?: Prisma.StringFieldUpdateOperationsInput | string
   telefone?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avaliacao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type UsuarioCountOrderByAggregateInput = {
@@ -334,10 +402,14 @@ export type UsuarioCountOrderByAggregateInput = {
   email?: Prisma.SortOrder
   senha?: Prisma.SortOrder
   telefone?: Prisma.SortOrder
+  role?: Prisma.SortOrder
+  cpf?: Prisma.SortOrder
+  avaliacao?: Prisma.SortOrder
 }
 
 export type UsuarioAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  avaliacao?: Prisma.SortOrder
 }
 
 export type UsuarioMaxOrderByAggregateInput = {
@@ -346,6 +418,9 @@ export type UsuarioMaxOrderByAggregateInput = {
   email?: Prisma.SortOrder
   senha?: Prisma.SortOrder
   telefone?: Prisma.SortOrder
+  role?: Prisma.SortOrder
+  cpf?: Prisma.SortOrder
+  avaliacao?: Prisma.SortOrder
 }
 
 export type UsuarioMinOrderByAggregateInput = {
@@ -354,10 +429,14 @@ export type UsuarioMinOrderByAggregateInput = {
   email?: Prisma.SortOrder
   senha?: Prisma.SortOrder
   telefone?: Prisma.SortOrder
+  role?: Prisma.SortOrder
+  cpf?: Prisma.SortOrder
+  avaliacao?: Prisma.SortOrder
 }
 
 export type UsuarioSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  avaliacao?: Prisma.SortOrder
 }
 
 export type UsuarioScalarRelationFilter = {
@@ -374,12 +453,42 @@ export type StringFieldUpdateOperationsInput = {
   set?: string
 }
 
+export type EnumRoleFieldUpdateOperationsInput = {
+  set?: $Enums.Role
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
+export type NullableFloatFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type IntFieldUpdateOperationsInput = {
   set?: number
   increment?: number
   decrement?: number
   multiply?: number
   divide?: number
+}
+
+export type UsuarioCreateNestedOneWithoutProdutosInput = {
+  create?: Prisma.XOR<Prisma.UsuarioCreateWithoutProdutosInput, Prisma.UsuarioUncheckedCreateWithoutProdutosInput>
+  connectOrCreate?: Prisma.UsuarioCreateOrConnectWithoutProdutosInput
+  connect?: Prisma.UsuarioWhereUniqueInput
+}
+
+export type UsuarioUpdateOneRequiredWithoutProdutosNestedInput = {
+  create?: Prisma.XOR<Prisma.UsuarioCreateWithoutProdutosInput, Prisma.UsuarioUncheckedCreateWithoutProdutosInput>
+  connectOrCreate?: Prisma.UsuarioCreateOrConnectWithoutProdutosInput
+  upsert?: Prisma.UsuarioUpsertWithoutProdutosInput
+  connect?: Prisma.UsuarioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UsuarioUpdateToOneWithWhereWithoutProdutosInput, Prisma.UsuarioUpdateWithoutProdutosInput>, Prisma.UsuarioUncheckedUpdateWithoutProdutosInput>
 }
 
 export type UsuarioCreateNestedOneWithoutCarrinhoItensInput = {
@@ -412,12 +521,82 @@ export type UsuarioUpdateOneWithoutEnderecosNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UsuarioUpdateToOneWithWhereWithoutEnderecosInput, Prisma.UsuarioUpdateWithoutEnderecosInput>, Prisma.UsuarioUncheckedUpdateWithoutEnderecosInput>
 }
 
+export type UsuarioCreateWithoutProdutosInput = {
+  nomeCompleto: string
+  email: string
+  senha: string
+  telefone: string
+  role?: $Enums.Role
+  cpf?: string | null
+  avaliacao?: number | null
+  carrinhoItens?: Prisma.CarrinhoItemCreateNestedManyWithoutUsuarioInput
+  enderecos?: Prisma.EnderecoCreateNestedManyWithoutUsuarioInput
+}
+
+export type UsuarioUncheckedCreateWithoutProdutosInput = {
+  id?: number
+  nomeCompleto: string
+  email: string
+  senha: string
+  telefone: string
+  role?: $Enums.Role
+  cpf?: string | null
+  avaliacao?: number | null
+  carrinhoItens?: Prisma.CarrinhoItemUncheckedCreateNestedManyWithoutUsuarioInput
+  enderecos?: Prisma.EnderecoUncheckedCreateNestedManyWithoutUsuarioInput
+}
+
+export type UsuarioCreateOrConnectWithoutProdutosInput = {
+  where: Prisma.UsuarioWhereUniqueInput
+  create: Prisma.XOR<Prisma.UsuarioCreateWithoutProdutosInput, Prisma.UsuarioUncheckedCreateWithoutProdutosInput>
+}
+
+export type UsuarioUpsertWithoutProdutosInput = {
+  update: Prisma.XOR<Prisma.UsuarioUpdateWithoutProdutosInput, Prisma.UsuarioUncheckedUpdateWithoutProdutosInput>
+  create: Prisma.XOR<Prisma.UsuarioCreateWithoutProdutosInput, Prisma.UsuarioUncheckedCreateWithoutProdutosInput>
+  where?: Prisma.UsuarioWhereInput
+}
+
+export type UsuarioUpdateToOneWithWhereWithoutProdutosInput = {
+  where?: Prisma.UsuarioWhereInput
+  data: Prisma.XOR<Prisma.UsuarioUpdateWithoutProdutosInput, Prisma.UsuarioUncheckedUpdateWithoutProdutosInput>
+}
+
+export type UsuarioUpdateWithoutProdutosInput = {
+  nomeCompleto?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  senha?: Prisma.StringFieldUpdateOperationsInput | string
+  telefone?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avaliacao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  carrinhoItens?: Prisma.CarrinhoItemUpdateManyWithoutUsuarioNestedInput
+  enderecos?: Prisma.EnderecoUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UsuarioUncheckedUpdateWithoutProdutosInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nomeCompleto?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  senha?: Prisma.StringFieldUpdateOperationsInput | string
+  telefone?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avaliacao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  carrinhoItens?: Prisma.CarrinhoItemUncheckedUpdateManyWithoutUsuarioNestedInput
+  enderecos?: Prisma.EnderecoUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
 export type UsuarioCreateWithoutCarrinhoItensInput = {
   nomeCompleto: string
   email: string
   senha: string
   telefone: string
+  role?: $Enums.Role
+  cpf?: string | null
+  avaliacao?: number | null
   enderecos?: Prisma.EnderecoCreateNestedManyWithoutUsuarioInput
+  produtos?: Prisma.ProdutoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutCarrinhoItensInput = {
@@ -426,7 +605,11 @@ export type UsuarioUncheckedCreateWithoutCarrinhoItensInput = {
   email: string
   senha: string
   telefone: string
+  role?: $Enums.Role
+  cpf?: string | null
+  avaliacao?: number | null
   enderecos?: Prisma.EnderecoUncheckedCreateNestedManyWithoutUsuarioInput
+  produtos?: Prisma.ProdutoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutCarrinhoItensInput = {
@@ -450,7 +633,11 @@ export type UsuarioUpdateWithoutCarrinhoItensInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   senha?: Prisma.StringFieldUpdateOperationsInput | string
   telefone?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avaliacao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   enderecos?: Prisma.EnderecoUpdateManyWithoutUsuarioNestedInput
+  produtos?: Prisma.ProdutoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutCarrinhoItensInput = {
@@ -459,7 +646,11 @@ export type UsuarioUncheckedUpdateWithoutCarrinhoItensInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   senha?: Prisma.StringFieldUpdateOperationsInput | string
   telefone?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avaliacao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   enderecos?: Prisma.EnderecoUncheckedUpdateManyWithoutUsuarioNestedInput
+  produtos?: Prisma.ProdutoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateWithoutEnderecosInput = {
@@ -467,7 +658,11 @@ export type UsuarioCreateWithoutEnderecosInput = {
   email: string
   senha: string
   telefone: string
+  role?: $Enums.Role
+  cpf?: string | null
+  avaliacao?: number | null
   carrinhoItens?: Prisma.CarrinhoItemCreateNestedManyWithoutUsuarioInput
+  produtos?: Prisma.ProdutoCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutEnderecosInput = {
@@ -476,7 +671,11 @@ export type UsuarioUncheckedCreateWithoutEnderecosInput = {
   email: string
   senha: string
   telefone: string
+  role?: $Enums.Role
+  cpf?: string | null
+  avaliacao?: number | null
   carrinhoItens?: Prisma.CarrinhoItemUncheckedCreateNestedManyWithoutUsuarioInput
+  produtos?: Prisma.ProdutoUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutEnderecosInput = {
@@ -500,7 +699,11 @@ export type UsuarioUpdateWithoutEnderecosInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   senha?: Prisma.StringFieldUpdateOperationsInput | string
   telefone?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avaliacao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   carrinhoItens?: Prisma.CarrinhoItemUpdateManyWithoutUsuarioNestedInput
+  produtos?: Prisma.ProdutoUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutEnderecosInput = {
@@ -509,7 +712,11 @@ export type UsuarioUncheckedUpdateWithoutEnderecosInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   senha?: Prisma.StringFieldUpdateOperationsInput | string
   telefone?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  cpf?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avaliacao?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   carrinhoItens?: Prisma.CarrinhoItemUncheckedUpdateManyWithoutUsuarioNestedInput
+  produtos?: Prisma.ProdutoUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 
@@ -520,11 +727,13 @@ export type UsuarioUncheckedUpdateWithoutEnderecosInput = {
 export type UsuarioCountOutputType = {
   carrinhoItens: number
   enderecos: number
+  produtos: number
 }
 
 export type UsuarioCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   carrinhoItens?: boolean | UsuarioCountOutputTypeCountCarrinhoItensArgs
   enderecos?: boolean | UsuarioCountOutputTypeCountEnderecosArgs
+  produtos?: boolean | UsuarioCountOutputTypeCountProdutosArgs
 }
 
 /**
@@ -551,6 +760,13 @@ export type UsuarioCountOutputTypeCountEnderecosArgs<ExtArgs extends runtime.Typ
   where?: Prisma.EnderecoWhereInput
 }
 
+/**
+ * UsuarioCountOutputType without action
+ */
+export type UsuarioCountOutputTypeCountProdutosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProdutoWhereInput
+}
+
 
 export type UsuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -558,8 +774,12 @@ export type UsuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   email?: boolean
   senha?: boolean
   telefone?: boolean
+  role?: boolean
+  cpf?: boolean
+  avaliacao?: boolean
   carrinhoItens?: boolean | Prisma.Usuario$carrinhoItensArgs<ExtArgs>
   enderecos?: boolean | Prisma.Usuario$enderecosArgs<ExtArgs>
+  produtos?: boolean | Prisma.Usuario$produtosArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["usuario"]>
 
@@ -569,6 +789,9 @@ export type UsuarioSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   email?: boolean
   senha?: boolean
   telefone?: boolean
+  role?: boolean
+  cpf?: boolean
+  avaliacao?: boolean
 }, ExtArgs["result"]["usuario"]>
 
 export type UsuarioSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -577,6 +800,9 @@ export type UsuarioSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   email?: boolean
   senha?: boolean
   telefone?: boolean
+  role?: boolean
+  cpf?: boolean
+  avaliacao?: boolean
 }, ExtArgs["result"]["usuario"]>
 
 export type UsuarioSelectScalar = {
@@ -585,12 +811,16 @@ export type UsuarioSelectScalar = {
   email?: boolean
   senha?: boolean
   telefone?: boolean
+  role?: boolean
+  cpf?: boolean
+  avaliacao?: boolean
 }
 
-export type UsuarioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nomeCompleto" | "email" | "senha" | "telefone", ExtArgs["result"]["usuario"]>
+export type UsuarioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nomeCompleto" | "email" | "senha" | "telefone" | "role" | "cpf" | "avaliacao", ExtArgs["result"]["usuario"]>
 export type UsuarioInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   carrinhoItens?: boolean | Prisma.Usuario$carrinhoItensArgs<ExtArgs>
   enderecos?: boolean | Prisma.Usuario$enderecosArgs<ExtArgs>
+  produtos?: boolean | Prisma.Usuario$produtosArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UsuarioIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -601,6 +831,7 @@ export type $UsuarioPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   objects: {
     carrinhoItens: Prisma.$CarrinhoItemPayload<ExtArgs>[]
     enderecos: Prisma.$EnderecoPayload<ExtArgs>[]
+    produtos: Prisma.$ProdutoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -608,6 +839,9 @@ export type $UsuarioPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     email: string
     senha: string
     telefone: string
+    role: $Enums.Role
+    cpf: string | null
+    avaliacao: number | null
   }, ExtArgs["result"]["usuario"]>
   composites: {}
 }
@@ -1004,6 +1238,7 @@ export interface Prisma__UsuarioClient<T, Null = never, ExtArgs extends runtime.
   readonly [Symbol.toStringTag]: "PrismaPromise"
   carrinhoItens<T extends Prisma.Usuario$carrinhoItensArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$carrinhoItensArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarrinhoItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   enderecos<T extends Prisma.Usuario$enderecosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$enderecosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EnderecoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  produtos<T extends Prisma.Usuario$produtosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$produtosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProdutoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1038,6 +1273,9 @@ export interface UsuarioFieldRefs {
   readonly email: Prisma.FieldRef<"Usuario", 'String'>
   readonly senha: Prisma.FieldRef<"Usuario", 'String'>
   readonly telefone: Prisma.FieldRef<"Usuario", 'String'>
+  readonly role: Prisma.FieldRef<"Usuario", 'Role'>
+  readonly cpf: Prisma.FieldRef<"Usuario", 'String'>
+  readonly avaliacao: Prisma.FieldRef<"Usuario", 'Float'>
 }
     
 
@@ -1469,6 +1707,30 @@ export type Usuario$enderecosArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.EnderecoScalarFieldEnum | Prisma.EnderecoScalarFieldEnum[]
+}
+
+/**
+ * Usuario.produtos
+ */
+export type Usuario$produtosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Produto
+   */
+  select?: Prisma.ProdutoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Produto
+   */
+  omit?: Prisma.ProdutoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProdutoInclude<ExtArgs> | null
+  where?: Prisma.ProdutoWhereInput
+  orderBy?: Prisma.ProdutoOrderByWithRelationInput | Prisma.ProdutoOrderByWithRelationInput[]
+  cursor?: Prisma.ProdutoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProdutoScalarFieldEnum | Prisma.ProdutoScalarFieldEnum[]
 }
 
 /**

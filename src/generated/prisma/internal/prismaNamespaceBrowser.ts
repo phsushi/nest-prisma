@@ -52,7 +52,6 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Usuario: 'Usuario',
-  Vendedor: 'Vendedor',
   Produto: 'Produto',
   CarrinhoItem: 'CarrinhoItem',
   Endereco: 'Endereco'
@@ -76,23 +75,13 @@ export const UsuarioScalarFieldEnum = {
   nomeCompleto: 'nomeCompleto',
   email: 'email',
   senha: 'senha',
-  telefone: 'telefone'
-} as const
-
-export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
-
-
-export const VendedorScalarFieldEnum = {
-  id: 'id',
-  nomeCompleto: 'nomeCompleto',
-  email: 'email',
-  senha: 'senha',
   telefone: 'telefone',
+  role: 'role',
   cpf: 'cpf',
   avaliacao: 'avaliacao'
 } as const
 
-export type VendedorScalarFieldEnum = (typeof VendedorScalarFieldEnum)[keyof typeof VendedorScalarFieldEnum]
+export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
 
 
 export const ProdutoScalarFieldEnum = {
@@ -102,7 +91,7 @@ export const ProdutoScalarFieldEnum = {
   preco: 'preco',
   quantidadeEstoque: 'quantidadeEstoque',
   avaliacao: 'avaliacao',
-  vendedorId: 'vendedorId'
+  usuarioId: 'usuarioId'
 } as const
 
 export type ProdutoScalarFieldEnum = (typeof ProdutoScalarFieldEnum)[keyof typeof ProdutoScalarFieldEnum]
@@ -124,8 +113,7 @@ export const EnderecoScalarFieldEnum = {
   cep: 'cep',
   ruaAvenida: 'ruaAvenida',
   complemento: 'complemento',
-  usuarioId: 'usuarioId',
-  vendedorId: 'vendedorId'
+  usuarioId: 'usuarioId'
 } as const
 
 export type EnderecoScalarFieldEnum = (typeof EnderecoScalarFieldEnum)[keyof typeof EnderecoScalarFieldEnum]

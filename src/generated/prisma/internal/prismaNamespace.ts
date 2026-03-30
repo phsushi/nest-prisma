@@ -385,7 +385,6 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   Usuario: 'Usuario',
-  Vendedor: 'Vendedor',
   Produto: 'Produto',
   CarrinhoItem: 'CarrinhoItem',
   Endereco: 'Endereco'
@@ -404,7 +403,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "usuario" | "vendedor" | "produto" | "carrinhoItem" | "endereco"
+    modelProps: "usuario" | "produto" | "carrinhoItem" | "endereco"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -479,80 +478,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.UsuarioCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.UsuarioCountAggregateOutputType> | number
-        }
-      }
-    }
-    Vendedor: {
-      payload: Prisma.$VendedorPayload<ExtArgs>
-      fields: Prisma.VendedorFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.VendedorFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendedorPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.VendedorFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendedorPayload>
-        }
-        findFirst: {
-          args: Prisma.VendedorFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendedorPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.VendedorFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendedorPayload>
-        }
-        findMany: {
-          args: Prisma.VendedorFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendedorPayload>[]
-        }
-        create: {
-          args: Prisma.VendedorCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendedorPayload>
-        }
-        createMany: {
-          args: Prisma.VendedorCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.VendedorCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendedorPayload>[]
-        }
-        delete: {
-          args: Prisma.VendedorDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendedorPayload>
-        }
-        update: {
-          args: Prisma.VendedorUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendedorPayload>
-        }
-        deleteMany: {
-          args: Prisma.VendedorDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.VendedorUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.VendedorUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendedorPayload>[]
-        }
-        upsert: {
-          args: Prisma.VendedorUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VendedorPayload>
-        }
-        aggregate: {
-          args: Prisma.VendedorAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateVendedor>
-        }
-        groupBy: {
-          args: Prisma.VendedorGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.VendedorGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.VendedorCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.VendedorCountAggregateOutputType> | number
         }
       }
     }
@@ -819,23 +744,13 @@ export const UsuarioScalarFieldEnum = {
   nomeCompleto: 'nomeCompleto',
   email: 'email',
   senha: 'senha',
-  telefone: 'telefone'
-} as const
-
-export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
-
-
-export const VendedorScalarFieldEnum = {
-  id: 'id',
-  nomeCompleto: 'nomeCompleto',
-  email: 'email',
-  senha: 'senha',
   telefone: 'telefone',
+  role: 'role',
   cpf: 'cpf',
   avaliacao: 'avaliacao'
 } as const
 
-export type VendedorScalarFieldEnum = (typeof VendedorScalarFieldEnum)[keyof typeof VendedorScalarFieldEnum]
+export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
 
 
 export const ProdutoScalarFieldEnum = {
@@ -845,7 +760,7 @@ export const ProdutoScalarFieldEnum = {
   preco: 'preco',
   quantidadeEstoque: 'quantidadeEstoque',
   avaliacao: 'avaliacao',
-  vendedorId: 'vendedorId'
+  usuarioId: 'usuarioId'
 } as const
 
 export type ProdutoScalarFieldEnum = (typeof ProdutoScalarFieldEnum)[keyof typeof ProdutoScalarFieldEnum]
@@ -867,8 +782,7 @@ export const EnderecoScalarFieldEnum = {
   cep: 'cep',
   ruaAvenida: 'ruaAvenida',
   complemento: 'complemento',
-  usuarioId: 'usuarioId',
-  vendedorId: 'vendedorId'
+  usuarioId: 'usuarioId'
 } as const
 
 export type EnderecoScalarFieldEnum = (typeof EnderecoScalarFieldEnum)[keyof typeof EnderecoScalarFieldEnum]
@@ -907,6 +821,13 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
  * Reference to a field of type 'String'
  */
 export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
+    
+
+
+/**
+ * Reference to a field of type 'Role'
+ */
+export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
     
 
 
@@ -1019,7 +940,6 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   usuario?: Prisma.UsuarioOmit
-  vendedor?: Prisma.VendedorOmit
   produto?: Prisma.ProdutoOmit
   carrinhoItem?: Prisma.CarrinhoItemOmit
   endereco?: Prisma.EnderecoOmit
