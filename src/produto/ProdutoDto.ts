@@ -27,5 +27,5 @@ export class ProdutoDto {
 
     @IsNotEmpty()
     @IsNumber()
-    vendedorId:number
+    usuarioId:number
 }
