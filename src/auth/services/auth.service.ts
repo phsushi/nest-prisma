@@ -3,6 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { access } from 'fs';
 import { UsersService } from 'src/users/services/users/users.service';
 import * as bcrypt from 'bcrypt'
+import { EnderecoDto } from '../enderecoDto';
 
 @Injectable()
 export class AuthService {
@@ -22,7 +23,8 @@ export class AuthService {
             throw new UnauthorizedException();
         }
 
-        const payload = {sub: user.id, email: user.email}
+        const payload = {sub: user.id, email: user.email, nome: user.nomeCompleto, telefone: user.telefone}
         return {access_token: await this.jwtService.signAsync(payload)};
     }
+
 }
