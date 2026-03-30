@@ -4,10 +4,11 @@ import { access } from 'fs';
 import { UsersService } from 'src/users/services/users/users.service';
 import * as bcrypt from 'bcrypt'
 import { EnderecoDto } from '../enderecoDto';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class AuthService {
-    constructor(private userService: UsersService, private jwtService: JwtService){}
+    constructor(private userService: UsersService, private jwtService: JwtService, private prismaService: PrismaService){}
 
     async signIn(email: string, pass:string){
         
@@ -22,8 +23,21 @@ export class AuthService {
         if(!isMatch){
             throw new UnauthorizedException();
         }
-
-        const payload = {sub: user.id, email: user.email, nome: user.nomeCompleto, telefone: user.telefone}
+        const enderecosDoUsuario = await this.prismaService.usuario.findUnique({where:{id:user.id}, select:{
+            email: true,
+            nomeCompleto: true,
+            telefone: true,
+            enderecos: {
+                select: {
+                    id: false,
+                    cep: true,
+                    ruaAvenida: true,
+                    complemento:true,
+                    usuarioId: false
+                }
+            }
+        }})
+        const payload = {sub: user.id, ...enderecosDoUsuario}
         return {access_token: await this.jwtService.signAsync(payload)};
     }
 
