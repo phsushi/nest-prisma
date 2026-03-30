@@ -26,7 +26,7 @@ export class AuthController {
     @UsePipes(new ValidationPipe)
     @Post('endereco')
     createAddress(@Body() endereco: EnderecoDto, @Request() req){
-        const email:number = req.user.email
+        const email:string = req.user.email
         return this.enderecoService.createAddress(email, endereco);
     }
 }
