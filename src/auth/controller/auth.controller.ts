@@ -1,8 +1,8 @@
 import { Body, Controller, Get, HttpCode, HttpStatus, Post, Request, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AuthService } from '../services/auth.service';
-import { UserDto } from 'src/users/userDto';
 import { SignInDto } from '../signInDto';
 import { AuthGuard } from '../guards/auth/auth.guard';
+import { EnderecoDto } from '../enderecoDto';
 
 @Controller('auth')
 export class AuthController {
@@ -19,5 +19,13 @@ export class AuthController {
     @Get('profile')
     getProfile(@Request() req){
         return req.user;
+    }
+
+    @UseGuards(AuthGuard)
+    @UsePipes(new ValidationPipe)
+    @Post('endereco')
+    createAddress(@Body() endereco: EnderecoDto, @Request() req){
+        const samba:number = req.user.sub
+        return {...endereco, samba};
     }
 }
