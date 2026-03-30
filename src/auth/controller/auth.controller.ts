@@ -3,10 +3,11 @@ import { AuthService } from '../services/auth.service';
 import { SignInDto } from '../signInDto';
 import { AuthGuard } from '../guards/auth/auth.guard';
 import { EnderecoDto } from '../enderecoDto';
+import { EnderecoService } from 'src/users/services/endereco/endereco.service';
 
 @Controller('auth')
 export class AuthController {
-    constructor(private authService: AuthService){}
+    constructor(private authService: AuthService, private enderecoService: EnderecoService){}
 
     @HttpCode(HttpStatus.OK)
     @Post('login')
@@ -25,7 +26,7 @@ export class AuthController {
     @UsePipes(new ValidationPipe)
     @Post('endereco')
     createAddress(@Body() endereco: EnderecoDto, @Request() req){
-        const samba:number = req.user.sub
-        return {...endereco, samba};
+        const email:number = req.user.email
+        return this.enderecoService.createAddress(email, endereco);
     }
 }

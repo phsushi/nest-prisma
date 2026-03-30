@@ -6,6 +6,7 @@ import { UsersModule } from 'src/users/users.module';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
+import { EnderecoService } from 'src/users/services/endereco/endereco.service';
 
 @Module({
   imports:  [UsersModule,
@@ -16,6 +17,6 @@ import { jwtConstants } from './constants';
     })
   ],
   controllers: [AuthController],
-  providers: [AuthService, UsersService, PrismaService]
+  providers: [AuthService, UsersService, PrismaService, EnderecoService]
 })
 export class AuthModule {}
