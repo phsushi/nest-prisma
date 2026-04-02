@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Post, Request, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Request, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AuthService } from '../services/auth.service';
 import { SignInDto } from '../signInDto';
 import { AuthGuard } from '../guards/auth/auth.guard';
@@ -18,6 +18,7 @@ export class AuthController {
 
     @UseGuards(AuthGuard)
     @Get('profile')
+    //Criar uma função própria para puxar os dados do usuário a partir de uma querry, não como está agora
     getProfile(@Request() req){
         return req.user;
     }
@@ -26,7 +27,15 @@ export class AuthController {
     @UsePipes(new ValidationPipe)
     @Post('endereco')
     createAddress(@Body() endereco: EnderecoDto, @Request() req){
-        const email:string = req.user.email
+        const email:string = req.user.email;
         return this.enderecoService.createAddress(email, endereco);
+    }
+    @UseGuards(AuthGuard)
+    @UsePipes(new ValidationPipe)
+    @Delete('endereco/:id')
+    deleteAddress(@Param('id', ParseIntPipe) idEndereco:number, @Request() req){
+        const email:string = req.user.email;
+        return this.enderecoService.deleteAddress(email, idEndereco)
+
     }
 }

@@ -30,5 +30,22 @@ export class EnderecoService {
         const dataEndereco = {...endereco, usuarioId}
         return this.prismaService.endereco.create({data: dataEndereco})
     }
-   
+    async deleteAddress(email:string, idEndereco:number){
+        const result = await this.prismaService.endereco.deleteMany({
+            where: {
+                id: idEndereco,
+                usuario: {
+                    email: email, // Filtra pelo email do dono através do relacionamento
+                },
+            },
+        });
+
+        // O deleteMany retorna um objeto { count: number }
+        if (result.count === 0) {
+            throw new ForbiddenException('Você não tem permissão para deletar este endereço ou ele não existe.');
+        }
+
+        return result;
+
+    }
 }
