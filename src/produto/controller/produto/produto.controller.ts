@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Query, UsePipes, ValidationPipe } from '@nestjs/common';
-import { ProdutoDto } from 'src/produto/ProdutoDto';
+import { ProdutoDto } from 'src/common/Dto/ProdutoDto';
 import { ProdutoService } from 'src/produto/services/produto/produto.service';
-import { UpdateProdutoDto } from 'src/produto/UpdateProdutoDto';
+import { UpdateProdutoDto } from 'src/common/Dto/UpdateProdutoDto';
 
 
 @Controller('produto')

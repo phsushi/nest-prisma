@@ -1,6 +1,6 @@
 import { ConflictException, ForbiddenException, Injectable } from '@nestjs/common';
 
-import { EnderecoDto } from 'src/auth/enderecoDto';
+import { EnderecoDto } from 'src/common/Dto/enderecoDto';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()

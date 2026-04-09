@@ -1,8 +1,8 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Request, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AuthService } from '../services/auth.service';
-import { SignInDto } from '../signInDto';
+import { SignInDto } from '../../common/Dto/signInDto';
 import { AuthGuard } from '../guards/auth/auth.guard';
-import { EnderecoDto } from '../enderecoDto';
+import { EnderecoDto } from '../../common/Dto/enderecoDto';
 import { EnderecoService } from 'src/users/services/endereco/endereco.service';
 
 @Controller('auth')
