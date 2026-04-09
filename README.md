@@ -1,68 +1,137 @@
+# 🚀 NestJS + Prisma API
 
-### Introdução 
+## 📌 Sobre o projeto
 
-Uma simples API criada com o objetivo de aprimorar e manter meus conhecimentos com conceitos de backend com Nest e banco de dados relacional com prisma.
+Esta é uma API REST desenvolvida com o objetivo de aprofundar conhecimentos em desenvolvimento backend utilizando **NestJS**, **Prisma** e banco de dados relacional.
 
-### Detalhes
+O projeto simula um sistema de gerenciamento com usuários, produtos e pedidos, aplicando conceitos de arquitetura modular, autenticação e boas práticas de desenvolvimento.
 
-Essa aplicação faz:
+---
 
-#### Usuários
+## 🛠️ Tecnologias utilizadas
 
-- Criação
-- Log In
+- Node.js
+- NestJS
+- Prisma ORM
+- SQLite
+- JWT (Autenticação)
+- Bcrypt (Hash de senha)
+- Swagger (Documentação)
+
+---
+
+## 🧱 Arquitetura
+
+A aplicação segue uma arquitetura modular baseada no padrão do NestJS:
+
+- **Controllers** → Responsáveis pelas rotas e entrada de dados
+- **Services** → Regras de negócio
+- **DTOs** → Validação e tipagem de dados
+- **Prisma** → Camada de acesso ao banco
+
+Além disso:
+
+- Uso de **Guards** para autenticação
+- Validação com `class-validator`
+- Separação por domínio (users, produtos, pedidos, etc.)
+
+---
+
+## 🔐 Autenticação
+
+A autenticação é feita utilizando **JWT**, garantindo que apenas usuários autenticados possam acessar determinadas rotas.
+
+- Login retorna um token JWT
+- Rotas protegidas utilizam `AuthGuard`
+- Senhas são armazenadas com hash utilizando bcrypt
+
+---
+
+## 📦 Funcionalidades
+
+### 👤 Usuários
+
+- Criação de usuário
+- Login
 - Visualização de perfil
 
-Usando jwt e bcrypt para autenticação e hash de senhas, respectivamente. 
-
-#### Produtos
-
-Além disso, ela faz as principais manipulações de produtos:
+### 🛍️ Produtos
 
 - Criação
-- Alteração
+- Atualização
 - Exclusão
 
-### O principal, Pedidos
+### 📦 Pedidos
 
- Sua maior funcionalidade é a criação de pedidos que reúne todos os aspectos da aplicação, os usuários e os produtos. 
- 
- 
- 
- Todas essas entidades são representadas em um banco de dados SQlite, criado por meio do schema do prisma.
+- Criação de pedidos relacionando usuários e produtos
 
+---
 
-### Documentação das rotas:
+## 📊 Banco de dados
 
-A documentação das rotas está sendo feita automaticamente por meio do swagger, quando iniciado o servidor na sua máquina acesse: [Swagger](http://localhost:3000/api)
+O banco de dados foi modelado utilizando **Prisma**, com suporte a:
 
+- Relacionamentos entre entidades
+- Migrations versionadas
+- Geração automática do client Prisma
 
-### Rodando a aplicação
+---
 
-Para que você possa rodar a aplicação da sua máquina, de clone no projeto.
+## 📄 Documentação da API
 
-````bash
+A documentação das rotas é gerada automaticamente com Swagger:
+
+👉 http://localhost:3000/api
+
+---
+
+## 🧪 Testes
+
+Atualmente, os testes estão em desenvolvimento.
+
+A API pode ser testada via:
+
+- Swagger
+- Postman
+- Insomnia
+
+## 🎯 Objetivo
+
+Este projeto tem como foco:
+
+- Evoluir habilidades em backend
+- Aplicar boas práticas de arquitetura
+- Trabalhar com autenticação e segurança
+- Simular cenários próximos ao ambiente profissional
+
+## ▶️ Como rodar o projeto
+
+Clone o repositório:
+
+```bash
 git clone https://github.com/phsushi/nest-prisma.git
-`````
+```
 
-Depois entre na pasta do projeto e baixe as dependências node usando o comando `npm i`.
+Instale as dependências:
 
-````bash
-npm i
-`````
+```bash
+npm install
+```
 
-Com as dependências instaladas, faça a migration do schema prisma para que os modelos possam ser interpretados e a criação do banco aconteça.
+Execute as migrations:
 
-`````bash
-npx prisma migrate dev 
-`````
+```bash
+npx prisma migrate dev
+```
 
-Depois use o comando `npx prisma generate` para que o PrismaService possa receber as alterações criadas pela migração.
+Gere o client do Prisma:
 
-`````bash
+```bash
 npx prisma generate
-`````
+```
 
-### Testes
+Inicie o servidor:
 
-Com todos os passos concluídos, basta usar um cliente como o Postman e testar as rotas documentadas pelo swagger. Ou então, utilizar o próprio swagger para fazer os testes.
+```bash
+npm run start:dev
+```
