@@ -1,13 +1,13 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Request, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, Request, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AuthService } from '../services/auth.service';
 import { SignInDto } from '../../common/Dto/signInDto';
-import { AuthGuard } from '../guards/auth/auth.guard';
-import { EnderecoDto } from '../../common/Dto/enderecoDto';
-import { EnderecoService } from 'src/users/services/endereco/endereco.service';
+import { AuthGuard } from '../../common/guards/auth/auth.guard';
+
+
 
 @Controller('auth')
 export class AuthController {
-    constructor(private authService: AuthService, private enderecoService: EnderecoService){}
+    constructor(private authService: AuthService){}
 
     @HttpCode(HttpStatus.OK)
     @Post('login')
@@ -21,21 +21,5 @@ export class AuthController {
     //Criar uma função própria para puxar os dados do usuário a partir de uma querry, não como está agora
     getProfile(@Request() req){
         return req.user;
-    }
-
-    @UseGuards(AuthGuard)
-    @UsePipes(new ValidationPipe)
-    @Post('endereco')
-    createAddress(@Body() endereco: EnderecoDto, @Request() req){
-        const email:string = req.user.email;
-        return this.enderecoService.createAddress(email, endereco);
-    }
-    @UseGuards(AuthGuard)
-    @UsePipes(new ValidationPipe)
-    @Delete('endereco/:id')
-    deleteAddress(@Param('id', ParseIntPipe) idEndereco:number, @Request() req){
-        const email:string = req.user.email;
-        return this.enderecoService.deleteAddress(email, idEndereco)
-
     }
 }

@@ -1,5 +1,4 @@
 import { ConflictException, ForbiddenException, Injectable } from '@nestjs/common';
-
 import { EnderecoDto } from 'src/common/Dto/enderecoDto';
 import { PrismaService } from 'src/prisma/prisma.service';
 
@@ -7,7 +6,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class EnderecoService {
     constructor(private prismaService: PrismaService){}
 
-    // Auth methods //
+    
     async createAddress(email:string, endereco: EnderecoDto){
 
         const userExists = await this.prismaService.usuario.findUnique({where:{email}});
@@ -23,7 +22,7 @@ export class EnderecoService {
         
         console.log(enderecosCadastradosDoUsuario.length);
 
-        if(enderecosCadastradosDoUsuario.length > 2){
+        if(enderecosCadastradosDoUsuario.length > 1){
             throw new ForbiddenException('Limite de endereços cadastrado já atingido')
         }
         
