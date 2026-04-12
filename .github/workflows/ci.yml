@@ -27,5 +27,5 @@ jobs:
         run: npm run build
 
       - name: Testando o Build da Imagem Docker
-        run: docker build -t nest-prisma-api
+        run: docker build -t nest-prisma-api .
 
