@@ -1,0 +1,31 @@
+
+name: Pipeline de Integração Contínua
+
+on: 
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verificacao-da-api-nest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixando o código no Github
+        uses: actions/checkout@v4
+
+      - name: Instalando o Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+        
+      - name: Instalando dependências
+        run: npm install
+
+      - name: Rodando o Build do NestJs
+        run: npm run build
+
+      - name: Testando o Build da Imagem Docker
+        run: docker build -t nest-prisma-api
+
