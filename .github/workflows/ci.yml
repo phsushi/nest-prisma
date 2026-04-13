@@ -48,4 +48,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/nest-prisma-api:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/nest-prisma-api:latest
