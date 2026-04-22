@@ -1,25 +1,11 @@
 
 import { IsEmail, IsNotEmpty, IsPhoneNumber, IsString, MinLength } from "class-validator"
+import { UserDto } from "./userDto"
+import { ApiProperty } from "@nestjs/swagger"
 
-export class VendedorNovoDto
+export class VendedorNovoDto extends UserDto
 {
-    id:number
-    
-    @IsEmail()
-    email: string
-
-    @IsNotEmpty()
-    @IsString()
-    nomeCompleto: string
-
-    @IsNotEmpty()
-    @IsString()
-    @MinLength(6,{message: "Mínimo de 6 caracteres para senha."})
-    senha: string
-
-    @IsPhoneNumber()
-    telefone: string
-
+    @ApiProperty()
     @IsNotEmpty()
     @IsString()
     cpf:string
