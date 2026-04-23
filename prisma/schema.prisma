@@ -49,7 +49,6 @@ model Produto {
   preco              Float
   quantidadeEstoque  Int
   avaliacao          Float    @default(0.0)
-  categoria          String
 
   // Relação com Vendedor (1 Vendedor cadastrou N Produtos)
   usuario   Usuario @relation(fields: [usuarioId], references: [id])
