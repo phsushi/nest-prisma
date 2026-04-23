@@ -52,6 +52,7 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Usuario: 'Usuario',
+  Categoria: 'Categoria',
   Produto: 'Produto',
   CarrinhoItem: 'CarrinhoItem',
   Endereco: 'Endereco'
@@ -84,6 +85,14 @@ export const UsuarioScalarFieldEnum = {
 export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
 
 
+export const CategoriaScalarFieldEnum = {
+  id: 'id',
+  nome: 'nome'
+} as const
+
+export type CategoriaScalarFieldEnum = (typeof CategoriaScalarFieldEnum)[keyof typeof CategoriaScalarFieldEnum]
+
+
 export const ProdutoScalarFieldEnum = {
   id: 'id',
   nomeProduto: 'nomeProduto',
@@ -91,7 +100,8 @@ export const ProdutoScalarFieldEnum = {
   preco: 'preco',
   quantidadeEstoque: 'quantidadeEstoque',
   avaliacao: 'avaliacao',
-  usuarioId: 'usuarioId'
+  usuarioId: 'usuarioId',
+  categoriaId: 'categoriaId'
 } as const
 
 export type ProdutoScalarFieldEnum = (typeof ProdutoScalarFieldEnum)[keyof typeof ProdutoScalarFieldEnum]

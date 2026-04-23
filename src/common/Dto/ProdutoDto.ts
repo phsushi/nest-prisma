@@ -35,4 +35,9 @@ export class ProdutoDto {
     @IsNotEmpty()
     @IsNumber()
     usuarioId:number
+
+    @ApiProperty()
+    @IsNumber()
+    @IsNotEmpty()
+    categoriaId:number
 }
