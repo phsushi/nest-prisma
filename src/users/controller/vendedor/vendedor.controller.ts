@@ -23,4 +23,5 @@ export class VendedorController {
         return this.vendedorService.upgradeUserToVendedor(email, vendedorData);
     }
 
+    //Listar meus produtos
 }

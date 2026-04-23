@@ -21,7 +21,7 @@ export class UserDto  {
     senha: string
 
     @ApiProperty()
-    @IsPhoneNumber()
+    @IsPhoneNumber("BR")
     telefone: string
 
 }

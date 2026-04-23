@@ -36,7 +36,11 @@ model Usuario {
   // Role de vendedor
   produtos     Produto[]
 }
-
+model Categoria{
+  id          Int       @id @default(autoincrement())
+  nome        String    @unique
+  produtos    Produto[]
+}
 
 model Produto {
   id                 Int      @id @default(autoincrement())
@@ -45,6 +49,7 @@ model Produto {
   preco              Float
   quantidadeEstoque  Int
   avaliacao          Float    @default(0.0)
+  categoria          String
 
   // Relação com Vendedor (1 Vendedor cadastrou N Produtos)
   usuario   Usuario @relation(fields: [usuarioId], references: [id])
@@ -52,6 +57,10 @@ model Produto {
 
   // Relação com Itens de Carrinho
   carrinhoItens CarrinhoItem[]
+
+  // Relação com Categoria
+  categoria   Categoria @relation(fields: [categoriaId], references: [id])
+  categoriaId Int       // A chave estrangeira física no banco
 }
 
 model CarrinhoItem {
