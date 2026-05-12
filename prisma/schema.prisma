@@ -36,7 +36,11 @@ model Usuario {
   // Role de vendedor
   produtos     Produto[]
 }
-
+model Categoria{
+  id          Int       @id @default(autoincrement())
+  nome        String    @unique
+  produtos    Produto[]
+}
 
 model Produto {
   id                 Int      @id @default(autoincrement())
@@ -52,6 +56,10 @@ model Produto {
 
   // Relação com Itens de Carrinho
   carrinhoItens CarrinhoItem[]
+
+  // Relação com Categoria
+  categoria   Categoria @relation(fields: [categoriaId], references: [id])
+  categoriaId Int       // A chave estrangeira física no banco
 }
 
 model CarrinhoItem {

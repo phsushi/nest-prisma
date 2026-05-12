@@ -3,10 +3,11 @@ import { UsersModule } from './users/users.module';
 import { ProdutoModule } from './produto/produto.module';
 import { AuthModule } from './auth/auth.module';
 import { EnderecoModule } from './endereco/endereco.module';
+import { CategoriaModule } from './categoria/categoria.module';
 
 
 @Module({
-  imports: [UsersModule, ProdutoModule, AuthModule, EnderecoModule],
+  imports: [UsersModule, ProdutoModule, AuthModule, EnderecoModule, CategoriaModule],
   controllers: [],
   providers: [],
 })

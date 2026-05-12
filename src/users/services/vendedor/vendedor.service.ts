@@ -3,6 +3,7 @@ import { VendedorNovoDto } from 'src/common/Dto/vendedorNovoDto';
 import { Role } from 'src/generated/prisma/enums';
 import { PrismaService } from 'src/prisma/prisma.service';
 import * as bcrypt from 'bcrypt'
+import { VendedorUpgradeUserDto } from 'src/common/Dto/vendedorUpgradeUserDto';
 
 @Injectable()
 export class VendedorService {
@@ -30,5 +31,15 @@ export class VendedorService {
 
         const {senha:_, ...result} = vendedorCriado
         return result
+    }
+    async upgradeUserToVendedor(email:string, vendedorData: VendedorUpgradeUserDto){
+        const vendedorCompleto =  await this.prismaService.usuario.update({data:{
+            cpf: vendedorData.cpf,
+            role: Role.VENDEDOR
+        }, where:{email}});
+
+        const {senha, cpf, ...vendedorAparado} = vendedorCompleto
+
+        return vendedorAparado;
     }
 }
