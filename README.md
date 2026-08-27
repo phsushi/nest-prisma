@@ -2,136 +2,80 @@
 
 ## 📌 Sobre o projeto
 
-Esta é uma API REST desenvolvida com o objetivo de aprofundar conhecimentos em desenvolvimento backend utilizando **NestJS**, **Prisma** e banco de dados relacional.
-
-O projeto simula um sistema de gerenciamento com usuários, produtos e pedidos, aplicando conceitos de arquitetura modular, autenticação e boas práticas de desenvolvimento.
+API REST desenvolvida para aprofundar conhecimentos em backend com **NestJS**, **Prisma** e banco de dados relacional. Simula um sistema de gerenciamento com usuários, produtos e pedidos, aplicando arquitetura modular, autenticação e boas práticas.
 
 ---
 
-## 🛠️ Tecnologias utilizadas
+## 🛠️ Tecnologias
 
-- Node.js
-- NestJS
-- Prisma ORM
-- SQLite
-- JWT (Autenticação)
-- Bcrypt (Hash de senha)
-- Swagger (Documentação)
+Node.js · NestJS · Prisma ORM · SQLite · JWT · Bcrypt · Swagger
 
 ---
 
 ## 🧱 Arquitetura
 
-A aplicação segue uma arquitetura modular baseada no padrão do NestJS:
+Arquitetura modular seguindo o padrão do NestJS, organizada **por sub-domínio** (usuários, produtos, pedidos), não por camada técnica:
 
-- **Controllers** → Responsáveis pelas rotas e entrada de dados
-- **Services** → Regras de negócio
-- **DTOs** → Validação e tipagem de dados
-- **Prisma** → Camada de acesso ao banco
-
-Além disso:
-
-- Uso de **Guards** para autenticação
-- Validação com `class-validator`
-- Separação por domínio (users, produtos, pedidos, etc.)
+- **Controllers** → rotas e entrada de dados
+- **Services** → regras de negócio
+- **DTOs** → validação e tipagem (`class-validator`)
+- **Prisma** → camada de acesso ao banco
+- **Guards** → autenticação
 
 ---
 
-## 🔐 Autenticação
+## 🎯 Decisões técnicas e trade-offs
 
-A autenticação é feita utilizando **JWT**, garantindo que apenas usuários autenticados possam acessar determinadas rotas.
+**NestJS em vez de Express puro.** Nest é mais opinativo e já resolve injeção de dependência, módulos e estrutura — trade-off é uma curva de aprendizado maior no início, mas ganha em manutenibilidade conforme o projeto cresce.
 
-- Login retorna um token JWT
-- Rotas protegidas utilizam `AuthGuard`
-- Senhas são armazenadas com hash utilizando bcrypt
+**Prisma como ORM.** Facilita a portabilidade entre bancos: trocar de SQLite para Postgres, por exemplo, não exige reescrever a camada de dados — só ajustar a connection string e rodar as migrations. Também traz migrations versionadas de graça.
+
+**TypeScript em vez de JavaScript.** Tipagem estrita em backend reduz bugs de contrato entre camadas, e interfaces/tipos tornam a manutenção mais segura em um projeto que tende a crescer em número de módulos.
+
+---
+
+## 🔐 Autenticação e autorização
+
+- **Autenticação:** JWT para geração/validação de token + bcrypt para hash de senha. Login retorna token, rotas protegidas usam `AuthGuard`.
+- **Autorização:** ainda não implementada. O design previsto usa **Roles** (ex.: só usuários com role `VENDEDOR` podem criar produto) — próximo passo natural sobre a base de auth já existente.
 
 ---
 
 ## 📦 Funcionalidades
 
-### 👤 Usuários
-
-- Criação de usuário
-- Login
-- Visualização de perfil
-
-### 🛍️ Produtos
-
-- Criação
-- Atualização
-- Exclusão
-
-### 📦 Pedidos
-
-- Criação de pedidos relacionando usuários e produtos
-
----
-
-## 📊 Banco de dados
-
-O banco de dados foi modelado utilizando **Prisma**, com suporte a:
-
-- Relacionamentos entre entidades
-- Migrations versionadas
-- Geração automática do client Prisma
-
----
-
-## 📄 Documentação da API
-
-A documentação das rotas é gerada automaticamente com Swagger:
-
-👉 http://localhost:3000/api
+- **Usuários:** criação, login, visualização de perfil
+- **Produtos:** criação, atualização, exclusão
+- **Pedidos:** criação relacionando usuários e produtos
 
 ---
 
 ## 🧪 Testes
 
-Atualmente, os testes estão em desenvolvimento.
+Ainda não implementados (existem os arquivos `.spec` gerados pelo Nest, mas sem cobertura real). Próximo passo: testes de integração com Jest + Supertest cobrindo o fluxo de autenticação.
 
-A API pode ser testada via:
+---
 
-- Swagger
-- Postman
-- Insomnia
+## 🐳 Docker & CI/CD
 
-## 🎯 Objetivo
+- `Dockerfile` e `docker-compose` configurados
+- Pipeline de CI/CD com deploy automático no DockerHub
 
-Este projeto tem como foco:
+---
 
-- Evoluir habilidades em backend
-- Aplicar boas práticas de arquitetura
-- Trabalhar com autenticação e segurança
-- Simular cenários próximos ao ambiente profissional
+## 📄 Documentação da API
 
-## ▶️ Como rodar o projeto
+Gerada automaticamente com Swagger: `http://localhost:3000/api`
 
-Clone o repositório:
+---
+
+## ▶️ Como rodar
 
 ```bash
 git clone https://github.com/phsushi/nest-prisma.git
-```
-
-Instale as dependências:
-
-```bash
 npm install
-```
-
-Execute as migrations:
-
-```bash
 npx prisma migrate dev
-```
-
-Gere o client do Prisma:
-
-```bash
 npx prisma generate
-```
-
-Inicie o servidor:
-
-```bash
 npm run start:dev
 ```
+
+
